@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dvu7dlvn4lyck"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(920, 0)

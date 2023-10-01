@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://co4hvrhg58g6s"]
+
+[ext_resource type="PackedScene" uid="uid://dvu7dlvn4lyck" path="res://parallax_background.tscn" id="1_dibe7"]
+[ext_resource type="Texture2D" uid="uid://hw57jgko4dpm" path="res://Fase/pit.jpg" id="1_h1yhy"]
+[ext_resource type="PackedScene" uid="uid://cn7odqc35g2s4" path="res://Player.tscn" id="2_7hn73"]
+[ext_resource type="Script" path="res://Personagem.cs" id="3_d8ey7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_onbkr"]
+a = Vector2(-465.75, 246)
+b = Vector2(-465.75, -364)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yfihd"]
+a = Vector2(1255, 35)
+b = Vector2(-68, 37)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cg5wt"]
+a = Vector2(1125, 592)
+b = Vector2(1125, -55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg2g7"]
+size = Vector2(1941, 102)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(493.75, 322)
+shape = SubResource("SegmentShape2D_onbkr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_yfihd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-247, -642)
+shape = SubResource("SegmentShape2D_cg5wt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(581, 300.5)
+scale = Vector2(2.50187, 2.36897)
+texture = ExtResource("1_h1yhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(873.5, 599)
+shape = SubResource("RectangleShape2D_wg2g7")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_dibe7")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_7hn73")]
+position = Vector2(112, 466)
+script = ExtResource("3_d8ey7")

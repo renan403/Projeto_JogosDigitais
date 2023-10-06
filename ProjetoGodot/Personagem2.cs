@@ -3,7 +3,7 @@ using System;
 using System.Text;
 using System.Threading;
 
-public partial class Personagem : CharacterBody2D
+public partial class Personagem2 : CharacterBody2D
 {
 	public const float Speed = 350.0f;
 	public const float JumpVelocity = -700.0f;
@@ -21,25 +21,30 @@ public partial class Personagem : CharacterBody2D
 	{
 		animator = GetNode<AnimationPlayer>("AnimationPlayer");
 		sprite = GetNode<Sprite2D>("Sprite2D");
-		SetAnimation("Idle");
-
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		   
-   
-		Vector2 velocity = Velocity;
+		if(con == 0)
+		{
+            SetAnimation("Idle");
+            Thread.Sleep(2000);
+			con = 1;
+        }
+        
+
+        Vector2 velocity = Velocity;
 
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;                  
 			
 
-		if (Input.IsActionJustPressed("player1_up") && IsOnFloor())		
+		if (Input.IsActionJustPressed("ui_up") && IsOnFloor())		
 			velocity.Y = JumpVelocity; 
 
 
-		direction = Input.GetVector("player1_left", "player1_right", "player1_up", "player1_down");
+		direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		
 		if (direction != Vector2.Zero)
 		{          
@@ -49,16 +54,15 @@ public partial class Personagem : CharacterBody2D
 		else
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		
-		if (velocity.X == 0 && IsOnFloor()) {
-			SetAnimation("Stand");
-		}
+		if (velocity.X == 0 && IsOnFloor()) 
+			SetAnimation("Stand");		
 		else if (velocity.X != 0 && IsOnFloor())
 			SetAnimation("Run");
-		else if (!IsOnFloor())
-		{
+		else if (!IsOnFloor())		
 			SetAnimation("Jump");
-		} 
 
+		if (Input.IsActionJustPressed("ui_attack"))
+			SetAnimation("Guard");
 		Velocity = velocity;
 		MoveAndSlide();
 		

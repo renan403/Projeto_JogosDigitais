@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16f1gwqrxbje"]
+
+[ext_resource type="Script" path="res://Scripts/Arena.gd" id="1_bg8cx"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_qbtyp"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_bg8cx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1603, 356)
+limit_left = 0
+limit_right = 3080
+limit_bottom = 900
+limit_smoothed = true
+script = ExtResource("3_qbtyp")
+margin = Vector2(10, 25)

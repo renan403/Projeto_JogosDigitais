@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://l2rtw6srxv8n"]
+
+[ext_resource type="Texture2D" uid="uid://l0pt6fek4tv4" path="res://Assets/Scenario/DeadPool/Fundo.png" id="1_ajqn2"]
+[ext_resource type="Texture2D" uid="uid://c8r7bof452vp7" path="res://Assets/Scenario/DeadPool/Correntes.png" id="1_bvk04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ydu3"]
+size = Vector2(2286.62, 115.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bow"]
+size = Vector2(88.5, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qynxq"]
+size = Vector2(70.5, 645)
+
+[node name="DeadPool" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+light_mask = 2
+scale = Vector2(2, 2)
+
+[node name="Cenario" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(2.20028, 2.62903)
+texture = ExtResource("1_ajqn2")
+
+[node name="Correntes" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-21.5, -89.5)
+scale = Vector2(1.7338, 1.67029)
+texture = ExtResource("1_bvk04")
+
+[node name="CollisionFloor" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.29166, 283.5)
+scale = Vector2(0.666667, 0.666667)
+shape = SubResource("RectangleShape2D_5ydu3")
+
+[node name="CollisionWallLeft" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-727.75, -3.5)
+shape = SubResource("RectangleShape2D_n6bow")
+
+[node name="CollisionWallRight" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(730.25, -0.5)
+shape = SubResource("RectangleShape2D_qynxq")

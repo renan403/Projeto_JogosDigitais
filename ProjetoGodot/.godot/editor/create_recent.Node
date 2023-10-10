@@ -1,0 +1,10 @@
+PopupMenu
+PopupPanel
+Camera2D
+StaticBody2D
+ParallaxBackground
+Sprite2D
+ParallaxLayer
+CollisionShape2D
+AnimationPlayer
+CharacterBody2D

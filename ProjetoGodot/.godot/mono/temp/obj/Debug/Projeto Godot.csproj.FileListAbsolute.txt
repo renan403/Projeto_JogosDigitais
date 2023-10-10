@@ -1,0 +1,34 @@
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\Projeto Godot.deps.json
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\Projeto Godot.runtimeconfig.json
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\Projeto Godot.dll
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\Projeto Godot.pdb
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\GodotSharp.dll
+S:\projeto_jogo_digital\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.AssemblyReference.cache
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.GeneratedMSBuildEditorConfig.editorconfig
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.AssemblyInfoInputs.cache
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.AssemblyInfo.cs
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.CoreCompileInputs.cache
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.CopyComplete
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.dll
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\refint\Projeto Godot.dll
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.pdb
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\Projeto Godot.genruntimeconfig.cache
+S:\projeto_jogo_digital\.godot\mono\temp\obj\Debug\ref\Projeto Godot.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\Projeto Godot.deps.json
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\Projeto Godot.runtimeconfig.json
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\Projeto Godot.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\Projeto Godot.pdb
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.AssemblyReference.cache
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.AssemblyInfoInputs.cache
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.AssemblyInfo.cs
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.CoreCompileInputs.cache
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.csproj.CopyComplete
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\refint\Projeto Godot.dll
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.pdb
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\Projeto Godot.genruntimeconfig.cache
+C:\repos\Projeto\ProjetoGodot\.godot\mono\temp\obj\Debug\ref\Projeto Godot.dll

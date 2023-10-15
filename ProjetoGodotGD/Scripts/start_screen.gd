@@ -11,9 +11,9 @@ func _process(delta):
 	pass
 	
 func LoadsPlayer1():
-	return "testvce"
+	return "LiuKang"
 func LoadsPlayer2():
-	return "testvce"
+	return "Play"
 
 func _on_btn_versus_pressed():
 	get_tree().change_scene_to_file("res://Main.tscn")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://8q7gn7f2bqd1"]
+
+[ext_resource type="Texture2D" uid="uid://dwuafw71kqkk4" path="res://Assets/Fighters/LiuKang/skill1_FireDrag.png" id="1_rt35y"]
+[ext_resource type="Script" path="res://Scripts/fire_dragon.gd" id="1_wpi76"]
+[ext_resource type="Texture2D" uid="uid://c0wsnpu32mx6t" path="res://Assets/Fighters/LiuKang/AnimPreFire.png" id="3_8m8qx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukte2"]
+atlas = ExtResource("1_rt35y")
+region = Rect2(363, 0, 121, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de2l3"]
+atlas = ExtResource("1_rt35y")
+region = Rect2(484, 0, 121, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mmgy"]
+atlas = ExtResource("3_8m8qx")
+region = Rect2(0, 0, 121, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgi4"]
+atlas = ExtResource("3_8m8qx")
+region = Rect2(121, 0, 121, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn0ja"]
+atlas = ExtResource("3_8m8qx")
+region = Rect2(242, 0, 121, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h83gb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukte2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de2l3")
+}],
+"loop": true,
+"name": &"fogo",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mmgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfgi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn0ja")
+}],
+"loop": false,
+"name": &"prefogo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jqk7"]
+size = Vector2(73, 9)
+
+[node name="FireDragon" type="Area2D"]
+position = Vector2(201, 94)
+script = ExtResource("1_wpi76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 1)
+sprite_frames = SubResource("SpriteFrames_h83gb")
+animation = &"fogo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-34.5, -1)
+shape = SubResource("RectangleShape2D_8jqk7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

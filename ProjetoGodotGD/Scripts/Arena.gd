@@ -1,34 +1,39 @@
 extends Node2D
 
 @onready var camera := $Camera2D as Camera2D
-@onready var p1 = preload("res://Scenes/player_1.tscn")
-@onready var p2 = preload("res://Scenes/player_2.tscn")
-@onready var cen = preload("res://Scenes/DeadPool.tscn")
-var lutador = {"player1": preload("res://Scenes/player_1.tscn")}
+
 var player1 = null
 var player2 = null 
 var cena = null
+
+var stages = {"DeadPool":preload("res://Scenes/DeadPool.tscn")}
+
+var lutador = {"LiuKang": preload("res://Scenes/liu_kang.tscn"),
+"Play":preload("res://Scenes/player_1.tscn")}
+
+
 var startMenu = preload("res://Scenes/start_screen.tscn").instantiate()
 
 func _ready():
 	
-	loadCena()
+	loadCena("DeadPool")
 	LoadPlayer1(startMenu.LoadsPlayer1())
 	LoadPlayer2(startMenu.LoadsPlayer2())
 
-func loadCena():
-	cena = cen.instantiate()
+func loadCena(stage):
+	
+	cena = stages[stage].instantiate()
 	cena.position= Vector2(1500,250)
 	self.add_child(cena)
 	
-func LoadPlayer1(lutador):
-	player1  = p1.instantiate()
+func LoadPlayer1(Champ):
+	player1 = lutador[Champ].instantiate()
 	player1.position = Vector2(1000,600)
 	self.add_child(player1)
-	camera.add_players($Player1)
+	camera.add_players(player1)
 	
-func LoadPlayer2(lutador):
-	player2  = p2.instantiate()
+func LoadPlayer2(Champ):
+	player2  = lutador[Champ].instantiate()
 	player2.position = Vector2(2000,600)
 	self.add_child(player2)
-	camera.add_players($Player2)
+	camera.add_players(player2)

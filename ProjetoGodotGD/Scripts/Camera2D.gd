@@ -10,9 +10,6 @@ var players = []
 
 @onready var screen_size = get_viewport().get_visible_rect().size
 
-
-
-
 func add_players(player):
 	if not player in players:
 		players.append(player)

@@ -47,12 +47,8 @@ func attack():
 	var direction = Input.get_axis("ui_EsqPlayer1", "ui_DirPlayer1")
 	velocity.x = lerp(direction * SPEED,velocity.x,0.1)
 	is_Attacking = true
-	
-func setAnim(anim):
-	animation.play()
 
 
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "rangeAtk":
 		is_Attacking = false
-		

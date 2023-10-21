@@ -14,6 +14,10 @@ config/name="Projeto Godot Gd"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [display]
 
 window/size/viewport_width=1600

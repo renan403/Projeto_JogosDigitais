@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4wosye68b07l"]
+
+[ext_resource type="Script" path="res://Scripts/SelectScreen.gd" id="1_lnfi7"]
+[ext_resource type="Texture2D" uid="uid://s3xm1ep7tuas" path="res://Assets/icons/LiuKangIcon.png" id="1_trmy0"]
+[ext_resource type="Texture2D" uid="uid://s0q4iirg0ttb" path="res://Assets/icons/shaokang (Custom).jpg" id="2_56mqa"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnfi7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1595.0
+offset_bottom = 898.0
+color = Color(0.760784, 0.898039, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "chose your character
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LiuKangButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_trmy0")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ShaoKangButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("2_56mqa")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/LiuKangButton" to="." method="_on_liu_kang_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer2/ShaoKangButton" to="." method="_on_shao_kang_button_pressed"]

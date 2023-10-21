@@ -12,6 +12,7 @@ var lutador = {"LiuKang": preload("res://Scenes/liu_kang.tscn"),
 "Play":preload("res://Scenes/player_1.tscn")}
 
 
+
 var startMenu = preload("res://Scenes/start_screen.tscn").instantiate()
 
 func _ready():
@@ -19,7 +20,6 @@ func _ready():
 	loadCena("DeadPool")
 	LoadPlayer1(startMenu.LoadsPlayer1())
 	LoadPlayer2(startMenu.LoadsPlayer2())
-
 func loadCena(stage):
 	
 	cena = stages[stage].instantiate()
@@ -27,7 +27,7 @@ func loadCena(stage):
 	self.add_child(cena)
 	
 func LoadPlayer1(Champ):
-	player1 = lutador[Champ].instantiate()
+	player1 = load(Global.PlayerDir).instantiate()
 	player1.position = Vector2(1000,600)
 	self.add_child(player1)
 	camera.add_players(player1)

@@ -271,4 +271,5 @@ shape = SubResource("CapsuleShape2D_w6sjw")
 [node name="SkillDragonFloor" type="Marker2D" parent="."]
 position = Vector2(40.667, -28)
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

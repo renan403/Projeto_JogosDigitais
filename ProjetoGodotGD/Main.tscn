@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_qbtyp"]
 
 [node name="Arena" type="Node2D"]
+light_mask = 7
+visibility_layer = 6
 script = ExtResource("1_bg8cx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -14,3 +16,35 @@ limit_bottom = 900
 limit_smoothed = true
 script = ExtResource("3_qbtyp")
 margin = Vector2(10, 25)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HP_p1" type="ColorRect" parent="HUD"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 543.0
+offset_bottom = 56.0
+color = Color(0, 0, 0, 0.509804)
+
+[node name="Bar" type="ColorRect" parent="HUD/HP_p1"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 506.0
+offset_bottom = 25.0
+color = Color(1, 0, 0, 1)
+
+[node name="HP_p2" type="ColorRect" parent="HUD"]
+offset_left = 1040.0
+offset_top = 29.0
+offset_right = 1550.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 0.509804)
+
+[node name="Bar" type="ColorRect" parent="HUD/HP_p2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 506.0
+offset_bottom = 25.0
+color = Color(1, 0, 0, 1)

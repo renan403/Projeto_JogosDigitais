@@ -6,34 +6,32 @@ var player1 = null
 var player2 = null 
 var cena = null
 
-var stages = {"DeadPool":preload("res://Scenes/DeadPool.tscn")}
-
 var lutador = {"LiuKang": preload("res://Scenes/liu_kang.tscn"),
-"Play":preload("res://Scenes/player_1.tscn")}
-
+			   "Play"   : preload("res://Scenes/player_1.tscn")}
 
 var startMenu = preload("res://Scenes/start_screen.tscn").instantiate()
+var selection = preload("res://Scenes/selecao_champs.tscn").instantiate()
 
 func _ready():
-	
-	loadCena("DeadPool")
-	LoadPlayer1(startMenu.LoadsPlayer1())
-	LoadPlayer2(startMenu.LoadsPlayer2())
+	loadCena()
+	LoadPlayer1()
+	LoadPlayer2()
 
-func loadCena(stage):
-	
-	cena = stages[stage].instantiate()
-	cena.position= Vector2(1500,250)
+func loadCena():
+	cena = Global.FaseAleat().instantiate()
+	cena.position = Vector2(1500,250)
 	self.add_child(cena)
 	
-func LoadPlayer1(Champ):
-	player1 = lutador[Champ].instantiate()
+func LoadPlayer1():
+	player1 = lutador[Global.player1].instantiate()
+	player1.inicializaChampP1(true)
 	player1.position = Vector2(1000,600)
-	self.add_child(player1)
+	self.add_child(player1) 
 	camera.add_players(player1)
 	
-func LoadPlayer2(Champ):
-	player2  = lutador[Champ].instantiate()
+func LoadPlayer2():
+	player2  = lutador[Global.player2].instantiate()
+	player2.inicializaChampP2(true)
 	player2.position = Vector2(2000,600)
 	self.add_child(player2)
 	camera.add_players(player2)

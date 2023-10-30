@@ -7,10 +7,8 @@ var animar = true
 @onready var anim = $AnimatedSprite2D as AnimatedSprite2D
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	anim.play("fogo")
 	if animar:		
@@ -31,3 +29,10 @@ func preAnim():
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "prefogo":
 		anim.play("fogo")
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+
+func _on_body_entered(_body):
+	queue_free()

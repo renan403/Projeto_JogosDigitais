@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func LoadsPlayer1():
@@ -16,7 +16,7 @@ func LoadsPlayer2():
 	return "Play"
 
 func _on_btn_versus_pressed():
-	get_tree().change_scene_to_file("res://Main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/selecao_champs.tscn")
 
 	
 func _on_btn_sair_pressed():

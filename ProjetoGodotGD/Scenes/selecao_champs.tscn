@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqnilsunpjvir"]
+
+[ext_resource type="Script" path="res://Scripts/selecao_champs.gd" id="1_tvt3a"]
+[ext_resource type="Texture2D" uid="uid://n1rv6ots8mmm" path="res://Assets/Fighters/LiuKang/LiuKangSelection.png" id="2_ggurv"]
+[ext_resource type="Texture2D" uid="uid://c4isy0krokyyp" path="res://Assets/Fighters/Reptile/ReptileSelection.png" id="3_y8qs6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2ish"]
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kuru"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osoat"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0, 1)
+
+[node name="SelecaoChamps" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvt3a")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 177.0
+offset_right = 666.0
+offset_bottom = 272.0
+text = "Escolha"
+label_settings = SubResource("LabelSettings_v2ish")
+
+[node name="LiuKang" type="Button" parent="."]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 404.0
+offset_right = 450.0
+offset_bottom = 562.0
+tooltip_text = "Liu Kang"
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2kuru")
+icon = ExtResource("2_ggurv")
+
+[node name="Reptile" type="Button" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 405.0
+offset_right = 571.0
+offset_bottom = 563.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
+icon = ExtResource("3_y8qs6")
+
+[connection signal="pressed" from="LiuKang" to="." method="_on_liu_kang_pressed"]
+[connection signal="pressed" from="Reptile" to="." method="_on_reptile_pressed"]

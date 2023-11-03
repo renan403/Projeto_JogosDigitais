@@ -11,8 +11,7 @@ func _ready():
 
 func _process(delta):
 	anim.play("fogo")
-	if animar:		
-		
+	if animar:
 		animar = false
 	velocity.x = speed * delta * direction
 	translate(velocity)
@@ -20,7 +19,7 @@ func _process(delta):
 func setDirecao(dir):
 	direction = dir
 	if direction == 1:
-		anim.flip_h = false		
+		anim.flip_h = false
 	else:
 		$CollisionShape2D.position.x = $CollisionShape2D.position.x *-1
 		anim.flip_h = true
@@ -34,5 +33,12 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
+	print("Parede")
+	queue_free()
+	
+
+
+func _on_area_entered(area):
+	print("lutador")
 	queue_free()

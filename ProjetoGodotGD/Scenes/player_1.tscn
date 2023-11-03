@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ss81muesn2qf"]
+[gd_scene load_steps=28 format=3 uid="uid://ss81muesn2qf"]
 
 [ext_resource type="Script" path="res://Scripts/Player1.gd" id="1_aqrsa"]
 [ext_resource type="Texture2D" uid="uid://s385sxuvkw0t" path="res://Assets/Fighters/Cooler/stand.png" id="2_5kph4"]
@@ -165,8 +165,13 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ca2h"]
+size = Vector2(27.25, 55.125)
+
 [node name="Player1" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_aqrsa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -179,7 +184,15 @@ autoplay = "idle"
 frame = 2
 frame_progress = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.125, -5.4375)
+shape = SubResource("RectangleShape2D_4ca2h")
+debug_color = Color(0.909804, 0.298039, 0, 0.419608)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

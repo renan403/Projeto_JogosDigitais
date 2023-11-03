@@ -1,0 +1,173 @@
+[gd_scene load_steps=25 format=3 uid="uid://ne3yj3o837o7"]
+
+[ext_resource type="Texture2D" uid="uid://lw7k402k0not" path="res://Assets/Scenario/ThePit/imagem_2023-11-02_020255762.png" id="1_7ebwa"]
+[ext_resource type="Script" path="res://the_pit.gd" id="1_1850q"]
+[ext_resource type="Texture2D" uid="uid://dr1140hwfbj5r" path="res://Assets/Scenario/ThePit/Blaze.png" id="2_b3nyx"]
+[ext_resource type="Texture2D" uid="uid://fhcdh7nsmmqc" path="res://Assets/Scenario/ThePit/johnnyCage.png" id="4_5k405"]
+[ext_resource type="AudioStream" uid="uid://ehmr6eh7nnam" path="res://Assets/Themes/Mortal-Kombat-3-Remake-The-Pit-III-Theme.ogg" id="5_xink7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loqgm"]
+size = Vector2(3117, 105.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edgvt"]
+size = Vector2(56, 1274)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f76tm"]
+size = Vector2(38, 963.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26ls3"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(0, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tg88"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(23, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d5lk"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(46, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnqff"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(69, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqdiw"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(92, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty2t3"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(115, 0, 23, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8e8l"]
+atlas = ExtResource("2_b3nyx")
+region = Rect2(138, 0, 23, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2tnu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26ls3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tg88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d5lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnqff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqdiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty2t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8e8l")
+}],
+"loop": true,
+"name": &"idleBlaze",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g7vn"]
+atlas = ExtResource("4_5k405")
+region = Rect2(0, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7koq"]
+atlas = ExtResource("4_5k405")
+region = Rect2(62, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq37c"]
+atlas = ExtResource("4_5k405")
+region = Rect2(124, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vldk"]
+atlas = ExtResource("4_5k405")
+region = Rect2(186, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2nw0"]
+atlas = ExtResource("4_5k405")
+region = Rect2(248, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd1gl"]
+atlas = ExtResource("4_5k405")
+region = Rect2(310, 0, 62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv8pl"]
+atlas = ExtResource("4_5k405")
+region = Rect2(372, 0, 62, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwaeh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g7vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7koq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq37c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vldk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2nw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd1gl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv8pl")
+}],
+"loop": true,
+"name": &"idleJohnnyCage",
+"speed": 5.0
+}]
+
+[node name="ThePit" type="StaticBody2D"]
+position = Vector2(-3, 664)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_1850q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(54, 74.4999)
+scale = Vector2(0.968125, 1.02458)
+texture = ExtResource("1_7ebwa")
+
+[node name="Floor" type="CollisionShape2D" parent="."]
+position = Vector2(51, 388)
+shape = SubResource("RectangleShape2D_loqgm")
+
+[node name="WallL" type="CollisionShape2D" parent="."]
+position = Vector2(-1469, -19)
+shape = SubResource("RectangleShape2D_edgvt")
+
+[node name="WallR" type="CollisionShape2D" parent="."]
+position = Vector2(1588, -171)
+shape = SubResource("RectangleShape2D_f76tm")
+
+[node name="AnimBlaze" type="AnimatedSprite2D" parent="."]
+position = Vector2(115, -61)
+scale = Vector2(5.28804, 4.33013)
+sprite_frames = SubResource("SpriteFrames_2tnu6")
+animation = &"idleBlaze"
+frame_progress = 0.80695
+
+[node name="AnimJohnnyCage" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.866667, 0.823529, 1, 0.47451)
+position = Vector2(33, -36)
+scale = Vector2(0.847826, 0.98077)
+sprite_frames = SubResource("SpriteFrames_dwaeh")
+animation = &"idleJohnnyCage"
+frame_progress = 0.541343
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xink7")
+volume_db = -30.0
+autoplay = true

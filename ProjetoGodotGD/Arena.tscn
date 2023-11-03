@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c16f1gwqrxbje"]
+
+[ext_resource type="Script" path="res://Scripts/Arena.gd" id="1_bg8cx"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_qbtyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2www"]
+bg_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2qni"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_bg8cx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1040, 990)
+limit_left = 0
+limit_top = 0
+limit_right = 3080
+limit_bottom = 900
+limit_smoothed = true
+script = ExtResource("3_qbtyp")
+margin = Vector2(10, 25)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HP_p1" type="ColorRect" parent="HUD"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 543.0
+offset_bottom = 56.0
+color = Color(0, 0, 0, 0.509804)
+
+[node name="ProgressBarP1" type="ProgressBar" parent="HUD/HP_p1"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 507.0
+offset_bottom = 26.0
+theme_override_styles/background = SubResource("StyleBoxFlat_p2www")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l2qni")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HUD/HP_p1/ProgressBarP1"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 61.0
+offset_bottom = 24.0
+text = "Fighter
+"
+
+[node name="HP_p2" type="ColorRect" parent="HUD"]
+offset_left = 1040.0
+offset_top = 29.0
+offset_right = 1550.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 0.509804)
+
+[node name="ProgressBarP2" type="ProgressBar" parent="HUD/HP_p2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 507.0
+offset_bottom = 26.0
+theme_override_styles/background = SubResource("StyleBoxFlat_p2www")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l2qni")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HUD/HP_p2/ProgressBarP2"]
+offset_left = 444.0
+offset_top = -2.0
+offset_right = 499.0
+offset_bottom = 24.0
+text = "Fighter
+"

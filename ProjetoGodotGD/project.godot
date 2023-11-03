@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Projeto Godot Gd"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Arena.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
 [autoload]
@@ -69,10 +69,18 @@ ui_atkDistP2={
 
 [layer_names]
 
-2d_render/layer_1="Player1"
-2d_render/layer_2="Player2"
-2d_render/layer_3="Scene"
-2d_physics/layer_1="Player1"
+2d_render/layer_1="Player1_2dRender"
+2d_render/layer_2="Player2_2dRender"
+2d_render/layer_3="Scene_2dRender"
+2d_render/layer_4="Skill_2dRender"
+2d_physics/layer_1="PlayerP1"
+2d_physics/layer_2="HitP1"
+2d_physics/layer_3="SceneP1"
+2d_physics/layer_4="SkillP1"
+2d_physics/layer_5="PlayerP2"
+2d_physics/layer_6="HitP2"
+2d_physics/layer_7="SceneP2"
+2d_physics/layer_8="SkillP2"
 
 [rendering]
 

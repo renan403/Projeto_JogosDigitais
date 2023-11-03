@@ -16,22 +16,26 @@ func _ready():
 	loadCena()
 	LoadPlayer1()
 	LoadPlayer2()
-
+	
+	
 func loadCena():
 	cena = Global.FaseAleat().instantiate()
-	cena.position = Vector2(1500,250)
+	#The pit 1500 - 600
+	cena.position = Vector2(1500,600)
 	self.add_child(cena)
 	
 func LoadPlayer1():
 	player1 = lutador[Global.player1].instantiate()
 	player1.inicializaChampP1(true)
-	player1.position = Vector2(1000,600)
+	player1.Health($HUD/HP_p1/ProgressBarP1)
+	player1.position = Vector2(1000,750)
 	self.add_child(player1) 
 	camera.add_players(player1)
 	
 func LoadPlayer2():
 	player2  = lutador[Global.player2].instantiate()
 	player2.inicializaChampP2(true)
-	player2.position = Vector2(2000,600)
+	player2.Health($HUD/HP_p2/ProgressBarP2)
+	player2.position = Vector2(2000,750)
 	self.add_child(player2)
 	camera.add_players(player2)

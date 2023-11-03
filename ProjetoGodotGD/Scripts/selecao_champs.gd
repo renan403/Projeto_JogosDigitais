@@ -32,7 +32,7 @@ func _on_reptile_pressed():
 	return SelectionPlayer1() if !p1 else SelectionPlayer2()
 	
 func GoTo_PrincipalScene():
-	get_tree().change_scene_to_file("res://Main.tscn")
+	get_tree().change_scene_to_file("res://Arena.tscn")
 	
 func ChangeColor():
 	var cor = StyleBoxFlat.new()

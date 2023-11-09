@@ -2,6 +2,7 @@ extends Node
 
 var jogador = true
 #Durante o jogo
+var Map = 0
 var saudeP1 = 100
 var saudeP2 = 100
 #Ultimo lutador selecionado 
@@ -22,7 +23,7 @@ var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_atkDi
 	# Definições para o player 2
 
 var player2 := "Play"
-var collisionLayerP2 =5
+var collisionLayerP2 = 5
 var collisionMaskP2 = [1,3]
 var flip2 = -1
 var listCommandP2 = ["ui_left", "ui_right","ui_up","ui_atkDistP2"]
@@ -32,8 +33,13 @@ var listCommandP2 = ["ui_left", "ui_right","ui_up","ui_atkDistP2"]
 #ThePit altura 600
 
 func FaseAleat():
-	var telaRandom = round(randf_range(1,2))
+	var telaRandom = round(randf_range(1,3))
 	if telaRandom == 1:
+		Map = 750
 		return preload("res://Scenes/the_pit.tscn")
 	if telaRandom == 2:
+		Map = 1000
 		return preload("res://Scenes/DeadPool.tscn")
+	if telaRandom == 3:
+		Map = 1000
+		return preload("res://Scenes/the_armory.tscn")	

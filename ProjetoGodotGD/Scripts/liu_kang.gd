@@ -80,5 +80,5 @@ func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "skill1" or $AnimatedSprite2D.animation == "jumpSkill":
 		is_Attacking = false
 		
-func _on_hit_box_area_entered(area):
+func _on_hit_box_area_entered(_area):
 	barra.value -= lerp(-10,0,0.1)

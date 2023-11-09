@@ -70,6 +70,7 @@ value = 100.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="HUD/HP_p2/ProgressBarP2"]
+layout_mode = 0
 offset_left = 444.0
 offset_top = -2.0
 offset_right = 499.0

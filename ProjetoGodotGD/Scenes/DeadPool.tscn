@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://l2rtw6srxv8n"]
+[gd_scene load_steps=8 format=3 uid="uid://l2rtw6srxv8n"]
 
 [ext_resource type="Texture2D" uid="uid://l0pt6fek4tv4" path="res://Assets/Scenario/DeadPool/Fundo.png" id="1_ajqn2"]
 [ext_resource type="Texture2D" uid="uid://c8r7bof452vp7" path="res://Assets/Scenario/DeadPool/Correntes.png" id="1_bvk04"]
+[ext_resource type="Script" path="res://Scripts/DeadPool.gd" id="1_rnb1m"]
+[ext_resource type="AudioStream" uid="uid://n8urvgfunw4w" path="res://Assets/Themes/Mortal-Kombat-2-Arcade-OST-Original-Music-Soundtrack-Dead-Pool-_320-kbps_.ogg" id="4_4m3wk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ydu3"]
 size = Vector2(2286.62, 115.5)
@@ -12,57 +14,44 @@ size = Vector2(88.5, 648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qynxq"]
 size = Vector2(70.5, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul08r"]
-size = Vector2(702, 20)
+[node name="DeadPool" type="StaticBody2D"]
+collision_layer = 17
+script = ExtResource("1_rnb1m")
 
-[node name="DeadPool" type="Node2D"]
-light_mask = 2
-visibility_layer = 2
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-light_mask = 4
-visibility_layer = 4
-scale = Vector2(2, 2)
-
-[node name="Cenario" type="Sprite2D" parent="StaticBody2D"]
+[node name="Cenario" type="Sprite2D" parent="."]
 light_mask = 5
 visibility_layer = 5
-scale = Vector2(2.20028, 2.62903)
+scale = Vector2(4.40056, 5.25806)
 texture = ExtResource("1_ajqn2")
 
-[node name="Correntes" type="Sprite2D" parent="StaticBody2D"]
+[node name="Correntes" type="Sprite2D" parent="."]
 light_mask = 5
 visibility_layer = 5
-position = Vector2(-21.5, -89.5)
-scale = Vector2(1.7338, 1.67029)
+position = Vector2(-43, -179)
+scale = Vector2(3.4676, 3.34058)
 texture = ExtResource("1_bvk04")
 
-[node name="CollisionFloor" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionFloor" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-position = Vector2(2.29166, 283.5)
-scale = Vector2(0.666667, 0.666667)
+position = Vector2(4.58332, 567)
+scale = Vector2(1.33333, 1.33333)
 shape = SubResource("RectangleShape2D_5ydu3")
 
-[node name="CollisionWallLeft" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionWallLeft" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-position = Vector2(-727.75, -3.5)
+position = Vector2(-1455.5, -7)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_n6bow")
 
-[node name="CollisionWallRight" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionWallRight" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-position = Vector2(730.25, -0.5)
+position = Vector2(1460.5, -1)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qynxq")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-modulate = Color(1, 1, 0.0705882, 1)
-light_mask = 4
-visibility_layer = 4
-position = Vector2(544, 403)
-shape = SubResource("RectangleShape2D_ul08r")
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4m3wk")
+volume_db = -30.0

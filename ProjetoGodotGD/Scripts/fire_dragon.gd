@@ -23,22 +23,19 @@ func setDirecao(dir):
 	else:
 		$CollisionShape2D.position.x = $CollisionShape2D.position.x *-1
 		anim.flip_h = true
+		
 func preAnim():
 	anim.play("prefogo")
+	
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "prefogo":
 		anim.play("fogo")
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-func _on_body_entered(body):
-	print("Parede")
+func _on_body_entered(_body):
 	queue_free()
-	
 
-
-func _on_area_entered(area):
-	print("lutador")
+func _on_area_entered(_area):
 	queue_free()

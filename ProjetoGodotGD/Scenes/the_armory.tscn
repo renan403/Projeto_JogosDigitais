@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://4r85qy1u7kke"]
+
+[ext_resource type="Texture2D" uid="uid://b30nv8lbr4yy2" path="res://Assets/Scenario/TheArmory/TheArmory.png" id="1_n241b"]
+[ext_resource type="Script" path="res://Scripts/the_armory.gd" id="1_umhju"]
+[ext_resource type="Texture2D" uid="uid://b4pjeg2cvx6mk" path="res://Assets/Scenario/TheArmory/LavaDir.png" id="3_slob3"]
+[ext_resource type="AudioStream" uid="uid://d0exkixqjowdk" path="res://Assets/Themes/Mortal-Kombat-II-The-Armory-Remake_Gtu_C9Mxlr0.ogg" id="4_w4wvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wop4x"]
+size = Vector2(54, 1271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04irt"]
+size = Vector2(78, 1287)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0vc7"]
+size = Vector2(3134, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e4tl"]
+atlas = ExtResource("3_slob3")
+region = Rect2(0, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47fg3"]
+atlas = ExtResource("3_slob3")
+region = Rect2(59, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff7vm"]
+atlas = ExtResource("3_slob3")
+region = Rect2(118, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgj2v"]
+atlas = ExtResource("3_slob3")
+region = Rect2(177, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv1tb"]
+atlas = ExtResource("3_slob3")
+region = Rect2(236, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4dwc"]
+atlas = ExtResource("3_slob3")
+region = Rect2(295, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scblg"]
+atlas = ExtResource("3_slob3")
+region = Rect2(354, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdgag"]
+atlas = ExtResource("3_slob3")
+region = Rect2(413, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmny6"]
+atlas = ExtResource("3_slob3")
+region = Rect2(472, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avw7u"]
+atlas = ExtResource("3_slob3")
+region = Rect2(531, 0, 59, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4txv"]
+atlas = ExtResource("3_slob3")
+region = Rect2(590, 0, 59, 349)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k6fq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e4tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47fg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff7vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgj2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv1tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4dwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scblg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdgag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmny6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avw7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4txv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TheArmory" type="StaticBody2D"]
+collision_layer = 17
+script = ExtResource("1_umhju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 11)
+scale = Vector2(1.02078, 1.45212)
+texture = ExtResource("1_n241b")
+
+[node name="WallRight" type="CollisionShape2D" parent="."]
+position = Vector2(1554, 104)
+shape = SubResource("RectangleShape2D_wop4x")
+
+[node name="WallLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-1513, -1.5)
+shape = SubResource("RectangleShape2D_04irt")
+
+[node name="Floor" type="CollisionShape2D" parent="."]
+position = Vector2(24, 615)
+shape = SubResource("RectangleShape2D_g0vc7")
+
+[node name="LavaLeft" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1317, 126.15)
+scale = Vector2(1, 0.938968)
+sprite_frames = SubResource("SpriteFrames_6k6fq")
+flip_h = true
+
+[node name="LavaRight" type="AnimatedSprite2D" parent="."]
+position = Vector2(1366, 128.187)
+scale = Vector2(1, 0.944484)
+sprite_frames = SubResource("SpriteFrames_6k6fq")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w4wvb")
+volume_db = -40.306

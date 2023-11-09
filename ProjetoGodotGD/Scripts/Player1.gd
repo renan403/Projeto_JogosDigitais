@@ -69,6 +69,5 @@ func _on_animated_sprite_2d_animation_finished():
 		is_Attacking = false
 
 func _on_hit_box_area_entered(area):
-	print(area)
 	if area.name == "FireDragon":
 		barra.value -= 15

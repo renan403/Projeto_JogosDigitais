@@ -157,7 +157,7 @@ position = Vector2(115, -61)
 scale = Vector2(5.28804, 4.33013)
 sprite_frames = SubResource("SpriteFrames_2tnu6")
 animation = &"idleBlaze"
-frame_progress = 0.80695
+frame_progress = 0.942809
 
 [node name="AnimJohnnyCage" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.866667, 0.823529, 1, 0.47451)

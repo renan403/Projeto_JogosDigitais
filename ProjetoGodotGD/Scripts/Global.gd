@@ -16,7 +16,8 @@ var player1 := "LiuKang"
 var collisionLayerP1 = 1
 var collisionMaskP1 = 1
 var flip1 = 1
-var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_atkDistP1"]
+var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_atkDistP1", 
+"ui_punchP1", "ui_kickP1"]
 
 #Player 2 
 	# Definições para o player 2
@@ -36,4 +37,5 @@ func FaseAleat():
 	if telaRandom == 1:
 		return preload("res://Scenes/the_pit.tscn")
 	if telaRandom == 2:
-		return preload("res://Scenes/DeadPool.tscn")
+		return preload("res://Scenes/the_pit.tscn")
+		#return preload("res://Scenes/DeadPool.tscn")

@@ -13,7 +13,7 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_bg8cx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1040, 990)
+position = Vector2(-2721, 460)
 limit_left = 0
 limit_top = 0
 limit_right = 3080
@@ -70,6 +70,7 @@ value = 100.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="HUD/HP_p2/ProgressBarP2"]
+layout_mode = 0
 offset_left = 444.0
 offset_top = -2.0
 offset_right = 499.0

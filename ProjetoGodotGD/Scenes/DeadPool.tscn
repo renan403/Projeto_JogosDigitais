@@ -16,12 +16,12 @@ size = Vector2(70.5, 645)
 size = Vector2(702, 20)
 
 [node name="DeadPool" type="Node2D"]
-light_mask = 2
-visibility_layer = 2
+light_mask = 4
+visibility_layer = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 light_mask = 4
-visibility_layer = 4
+visibility_layer = 3
 scale = Vector2(2, 2)
 
 [node name="Cenario" type="Sprite2D" parent="StaticBody2D"]
@@ -39,7 +39,7 @@ texture = ExtResource("1_bvk04")
 
 [node name="CollisionFloor" type="CollisionShape2D" parent="StaticBody2D"]
 light_mask = 4
-visibility_layer = 4
+visibility_layer = 3
 position = Vector2(2.29166, 283.5)
 scale = Vector2(0.666667, 0.666667)
 shape = SubResource("RectangleShape2D_5ydu3")

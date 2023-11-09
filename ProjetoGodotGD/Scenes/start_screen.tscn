@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dimhglnwd6prt"]
+[gd_scene load_steps=8 format=3 uid="uid://dimhglnwd6prt"]
 
 [ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_cvv8g"]
-[ext_resource type="Texture2D" uid="uid://cssy531t0dhs0" path="res://Assets/Scenario/Cities_of_Outworld.webp" id="2_2vx6y"]
+[ext_resource type="Texture2D" uid="uid://dlax8ve1nyxio" path="res://Assets/images/startScreen.png" id="2_4nta7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00878"]
+
+[sub_resource type="Theme" id="Theme_4anb1"]
+Button/styles/normal = SubResource("StyleBoxFlat_00878")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enjtq"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,51 +27,27 @@ grow_vertical = 2
 script = ExtResource("1_cvv8g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(799.5, 448.25)
-scale = Vector2(1.595, 1.64917)
-texture = ExtResource("2_2vx6y")
+position = Vector2(799.5, 451.218)
+scale = Vector2(0.999375, 0.997292)
+texture = ExtResource("2_4nta7")
 
-[node name="controls" type="VBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -50.5
-offset_right = 51.0
-offset_bottom = 50.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_4anb1")
 
-[node name="btnVersus" type="Button" parent="controls"]
+[node name="btnSair" type="Button" parent="Control"]
+modulate = Color(0.756863, 0.156863, 0.992157, 1)
+self_modulate = Color(0.756863, 0.156863, 0.992157, 1)
 layout_mode = 2
-focus_neighbor_top = NodePath("../btnSair")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
-text = "Versus
-"
-
-[node name="btnControls" type="Button" parent="controls"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
-text = "Controles
-"
-
-[node name="btnSair" type="Button" parent="controls"]
-layout_mode = 2
+offset_left = 607.0
+offset_top = 762.0
+offset_right = 1021.0
+offset_bottom = 879.0
 focus_neighbor_bottom = NodePath("../btnVersus")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
@@ -75,9 +56,40 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
-text = "Sair
-"
 
-[connection signal="pressed" from="controls/btnVersus" to="." method="_on_btn_versus_pressed"]
-[connection signal="pressed" from="controls/btnControls" to="." method="_on_btn_controls_pressed"]
-[connection signal="pressed" from="controls/btnSair" to="." method="_on_btn_sair_pressed"]
+[node name="btnControls" type="Button" parent="Control"]
+modulate = Color(0.756863, 0.156863, 0.992157, 1)
+self_modulate = Color(0.756863, 0.156863, 0.992157, 1)
+layout_mode = 2
+offset_left = 606.0
+offset_top = 500.0
+offset_right = 1022.0
+offset_bottom = 619.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
+
+[node name="btnVersus" type="Button" parent="Control"]
+modulate = Color(0.756863, 0.156863, 0.992157, 1)
+self_modulate = Color(0.756863, 0.156863, 0.992157, 1)
+layout_mode = 2
+offset_left = 606.0
+offset_top = 370.0
+offset_right = 1021.0
+offset_bottom = 488.0
+focus_neighbor_top = NodePath("../btnSair")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
+
+[connection signal="pressed" from="Control/btnSair" to="." method="_on_btn_sair_pressed"]
+[connection signal="pressed" from="Control/btnControls" to="." method="_on_btn_controls_pressed"]
+[connection signal="pressed" from="Control/btnVersus" to="." method="_on_btn_versus_pressed"]

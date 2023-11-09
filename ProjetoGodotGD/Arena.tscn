@@ -13,7 +13,7 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_bg8cx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1040, 990)
+position = Vector2(-2721, 460)
 limit_left = 0
 limit_top = 0
 limit_right = 3080

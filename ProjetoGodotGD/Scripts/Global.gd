@@ -13,20 +13,25 @@ var selected := ""
 #Player 1
 	# Definições para o player 1
 
-var player1 := "LiuKang"
+var player1 := "Reptile"
 var collisionLayerP1 = 1
-var collisionMaskP1 = 1
+var collisionMaskP1 = 5
+var collisionLayerSkillP1 = 4
+var collisionMaskSkillP1 = 5
 var flip1 = 1
-var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_atkDistP1"]
-
+var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_BaixoPlayer1",
+					 "ui_AtkSocoAltoP1","ui_AtkSocoBaixoP1","ui_AtkChuteAltoP1","ui_AtkChuteBaixoP1"]
 #Player 2 
 	# Definições para o player 2
 
 var player2 := "Play"
 var collisionLayerP2 = 5
-var collisionMaskP2 = [1,3]
+var collisionMaskP2 = 1
+var collisionLayerSkillP2 = 8
+var collisionMaskSkillP2 = 1
 var flip2 = -1
-var listCommandP2 = ["ui_left", "ui_right","ui_up","ui_atkDistP2"]
+var listCommandP2 = ["ui_EsqPlayer2", "ui_DirPlayer2","ui_CimaPlayer2","ui_BaixoPlayer2",
+					 "ui_AtkSocoAltoP2","ui_AtkSocoBaixoP2","ui_AtkChuteAltoP2","ui_AtkChuteBaixoP2"]
 
 #Fase 
 
@@ -43,3 +48,4 @@ func FaseAleat():
 	if telaRandom == 3:
 		Map = 1000
 		return preload("res://Scenes/the_armory.tscn")	
+

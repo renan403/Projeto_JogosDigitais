@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://ne3yj3o837o7"]
 
 [ext_resource type="Texture2D" uid="uid://lw7k402k0not" path="res://Assets/Scenario/ThePit/imagem_2023-11-02_020255762.png" id="1_7ebwa"]
-[ext_resource type="Script" path="res://the_pit.gd" id="1_1850q"]
+[ext_resource type="Script" path="res://Scripts/the_pit.gd" id="1_h2sv6"]
 [ext_resource type="Texture2D" uid="uid://dr1140hwfbj5r" path="res://Assets/Scenario/ThePit/Blaze.png" id="2_b3nyx"]
 [ext_resource type="Texture2D" uid="uid://fhcdh7nsmmqc" path="res://Assets/Scenario/ThePit/johnnyCage.png" id="4_5k405"]
 [ext_resource type="AudioStream" uid="uid://ehmr6eh7nnam" path="res://Assets/Themes/Mortal-Kombat-3-Remake-The-Pit-III-Theme.ogg" id="5_xink7"]
@@ -132,8 +132,8 @@ animations = [{
 [node name="ThePit" type="StaticBody2D"]
 position = Vector2(-3, 664)
 collision_layer = 4
-collision_mask = 3
-script = ExtResource("1_1850q")
+collision_mask = 0
+script = ExtResource("1_h2sv6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(54, 74.4999)
@@ -157,7 +157,7 @@ position = Vector2(115, -61)
 scale = Vector2(5.28804, 4.33013)
 sprite_frames = SubResource("SpriteFrames_2tnu6")
 animation = &"idleBlaze"
-frame_progress = 0.80695
+frame_progress = 0.942809
 
 [node name="AnimJohnnyCage" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.866667, 0.823529, 1, 0.47451)

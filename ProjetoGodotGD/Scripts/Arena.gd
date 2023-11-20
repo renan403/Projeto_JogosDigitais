@@ -7,7 +7,8 @@ var player2 = null
 var cena = null
 
 var lutador = {"LiuKang": preload("res://Scenes/liu_kang.tscn"),
-			   "Play"   : preload("res://Scenes/player_1.tscn")}
+			   "Play"   : preload("res://Scenes/player_1.tscn"),
+			   "Reptile": preload("res://Assets/Fighters/Reptile/Scene/reptile.tscn")}
 
 var startMenu = preload("res://Scenes/start_screen.tscn").instantiate()
 var selection = preload("res://Scenes/selecao_champs.tscn").instantiate()
@@ -25,7 +26,7 @@ func loadCena():
 	
 func LoadPlayer1():
 	player1 = lutador[Global.player1].instantiate()
-	player1.inicializaChampP1(true)
+	player1.inicializaChampP1(true) 
 	player1.Health($HUD/HP_p1/ProgressBarP1)
 	$HUD/HP_p1/ProgressBarP1/Label.text = Global.player1
 	player1.position = Vector2(1000,Global.Map)

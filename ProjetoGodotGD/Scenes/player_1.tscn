@@ -169,9 +169,8 @@ animations = [{
 size = Vector2(27.25, 55.125)
 
 [node name="Player1" type="CharacterBody2D"]
-scale = Vector2(4, 4)
-collision_layer = 0
-collision_mask = 0
+scale = Vector2(5, 5)
+collision_mask = 4
 script = ExtResource("1_aqrsa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -184,15 +183,15 @@ autoplay = "idle"
 frame = 2
 frame_progress = 1.0
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 8
+[node name="HitBoxPlayer1" type="Area2D" parent="."]
+collision_mask = 16
 
-[node name="Collision" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0.125, -5.4375)
+[node name="Collision" type="CollisionShape2D" parent="HitBoxPlayer1"]
+position = Vector2(-32, -2.6)
 shape = SubResource("RectangleShape2D_4ca2h")
 debug_color = Color(0.909804, 0.298039, 0, 0.419608)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="HitBoxPlayer1" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBoxPlayer1" to="." method="_on_hit_box_player_1_body_entered"]

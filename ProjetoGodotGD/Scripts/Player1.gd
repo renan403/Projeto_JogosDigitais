@@ -13,10 +13,12 @@ var masks = Global.collisionMaskP2
 @onready var animation = $AnimatedSprite2D as AnimatedSprite2D
 
 func _on_ready():
+	#print(get_node(".").get_children())
 	animation.scale.x = Global.flip2
-	set_collision_layer_value(collision,true)
-	for mask in masks:
-		set_collision_mask_value(mask,true)
+	$HitBoxPlayer1.set_collision_layer_value(collision,true)
+	$HitBoxPlayer1.set_collision_mask_value(masks,true)
+	#set_collision_layer_value(collision,true)
+	#set_collision_mask_value(masks,true)
 	
 func Health(bar):
 	barra = bar
@@ -69,5 +71,13 @@ func _on_animated_sprite_2d_animation_finished():
 		is_Attacking = false
 
 func _on_hit_box_area_entered(area):
+	print("area teste")
+	barra.value -= 15
 	if area.name == "FireDragon":
 		barra.value -= 15
+	if area.name == "bikeKick":
+		barra.value -= 50
+
+
+func _on_hit_box_player_1_body_entered(body):
+	pass#print(body)

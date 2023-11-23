@@ -16,10 +16,12 @@ var colisaoMask
 var colisaoLayer
 var colisaoLayerEnemy
 var colisaoMaskEnemy
+var flipD
 @onready var animation = $AnimationPlayer as AnimationPlayer
 @onready var sprite = $Sprite as Sprite2D
 @onready var colisionHitBox  = $HitBoxReptile/CollisionHitBox  as CollisionShape2D
 @onready var colision  = $Collision as CollisionShape2D
+@onready var reptile = $"."
 
 func Health(bar):
 	barra = bar
@@ -30,7 +32,7 @@ func inicializaChampP1(initJg1):
 		colisaoMask = Global.collisionMaskP1
 		colisaoLayerEnemy = Global.collisionLayerSkillP1
 		colisaoMaskEnemy = Global.collisionMaskSkillP1
-		
+		flipD = Global.flip1
 	pass
 func inicializaChampP2(initJg2):
 	if initJg2:
@@ -39,11 +41,16 @@ func inicializaChampP2(initJg2):
 		colisaoMask = Global.collisionMaskP1
 		colisaoLayerEnemy = Global.collisionLayerP2
 		colisaoMaskEnemy = Global.collisionMaskSkillP2
+		flipD = Global.flip2
 	pass
 
 func _on_ready():
 	$HitBoxReptile.collision_layer = colisaoLayer
 	$HitBoxReptile.set_collision_mask_value(colisaoMask,true)
+	sprite.flip_h = flipD
+	
+
+	
 	
 	var IDget = get_node(".").get_children()[3].get_instance_id()
 	instanciaId = instance_from_id(IDget)
@@ -167,8 +174,11 @@ func _on_animation_player_animation_finished(anim_name):
 		skillAcidBall()
 		is_Attacking = false
 		
-func _on_hit_box_area_entered(area):
-	print("area rtest")
 
 func RenameInstance():
 	instanciaId.name = "HitBox"
+
+
+func _on_hurt_box_rep_area_entered(area):
+	print("area test Rep")
+	barra.value -= 15

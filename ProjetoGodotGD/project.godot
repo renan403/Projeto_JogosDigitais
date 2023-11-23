@@ -131,6 +131,8 @@ ui_AtkChuteBaixoP2={
 2d_physics/layer_6="HitP2"
 2d_physics/layer_7="SceneP2"
 2d_physics/layer_8="SkillP2"
+2d_physics/layer_9="hurtboxP1"
+2d_physics/layer_13="hurtBoxP2"
 
 [rendering]
 

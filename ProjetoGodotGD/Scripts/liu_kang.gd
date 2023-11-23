@@ -5,39 +5,59 @@ const SPEED := 500.0
 const JUMP_VELOCITY := -1200.0
 var is_Attacking := false
 var is_jumping := false
+var isCombo= false
 var gravity := 2000 
 var dir := 1
 var command
 var barra 
 
-var isCombo= false
+var colisaoMask
+var colisaoLayer
+var colisaoLayerEnemy
+var colisaoMaskEnemy
+var flipD
+
 var sequencia = []
 var moves = {
 	"bikeKick1" : ["Direita", "Chute"],
 	"bikeKick2" : ["Esquerda", "Chute"],
-	"frontPunch" : ["Direita", "Soco"],
+	"frontPunch1" : ["Direita", "Soco"],
+	"frontPunch2" : ["Esquerda", "Soco"],
 	"fireDragon" : ["Soco", "Chute"]
 }
 
 @export var tempoProCombo: float = 0.3
 var special = null
 @onready var timerCombo = $TimerCombo as Timer
+@onready var HitBox = $HitBoxLK as Area2D
+@onready var colHitBox = $HitBoxLK/CollisionShape2D as CollisionShape2D
 
 @onready var animation = $AnimatedSprite2D as AnimatedSprite2D
 @onready var anima = $AnimatedSprite2D/AnimationPlayer as AnimationPlayer
+
 func Health(bar):
 	barra = bar
 func inicializaChampP1(initJg1):
 	if initJg1:
 		command = Global.listCommandP1
+		colisaoLayer = Global.collisionLayerP1
+		colisaoMask = Global.collisionMaskP1
+		colisaoLayerEnemy = Global.collisionLayerSkillP1
+		colisaoMaskEnemy = Global.collisionMaskSkillP1
 	pass
 func inicializaChampP2(initJg2):
 	if initJg2:
 		command = Global.listCommandP2
+		colisaoLayer = Global.collisionLayerP2
+		colisaoMask = Global.collisionMaskP2
+		colisaoLayerEnemy = Global.collisionLayerP2
+		colisaoMaskEnemy = Global.collisionMaskSkillP2
 	pass
 
 func _on_ready():
-	$Area2D/CollisionShape2D.disabled = true
+	$HitBoxLK.collision_layer = colisaoLayer
+	$HitBoxLK.set_collision_mask_value(colisaoMask,true)
+	colHitBox.disabled = true
 	pass
 
 
@@ -51,13 +71,13 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		animation.scale.x = float(direction)
 		if direction < 0:
-			$Area2D/CollisionShape2D.position.x = -22.75
+			colHitBox.position.x = -22.75
 		else:
-			$Area2D/CollisionShape2D.position.x = 22.75
+			colHitBox.position.x = 22.75
 			
 		if !is_jumping:
 			setAnim("walk")
-		elif is_jumping and !is_Attacking and velocity.x != 0:
+		elif is_jumping and !is_Attacking:
 			setAnim("jumpMov")
 		
 
@@ -66,32 +86,26 @@ func _physics_process(delta):
 			setAnim("jumpSt")
 		else:
 			setAnim("idle")
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 			
-
-	if Input.is_action_just_pressed(command[5]) and !isCombo and !is_jumping and special == null:
-		punch()
-		
-	elif Input.is_action_just_pressed(command[6]) and !isCombo and !is_jumping and special == null:
-		kick()
-		
 	
 	if special == "bikeKick1":
-		if isCombo:
 			kickBike(dir)
 	elif special == "bikeKick2":
-		if isCombo:
 			kickBike(dir)
-	elif special == "frontPunch":
-		if isCombo:
-			frontPunch()
+	elif special == "frontPunch1":
+			frontPunch(dir)
+	elif special == "frontPunch2":
+			frontPunch(dir)
 	elif special == "fireDragon":
-		if isCombo:
 			FireDragon()#não está saíndo  de forma conssitente
-			
+	elif Input.is_action_just_pressed(command[5]) and !is_jumping and special == null and !is_Attacking:
+		punch()	
+	elif Input.is_action_just_pressed(command[6]) and !is_jumping and special == null and !is_Attacking:
+		kick()
 			
 		
 
@@ -141,26 +155,34 @@ func FireDragon():
 func punch():
 	setAnim("punch")
 	velocity.x = 0
+	colHitBox.position.y = -35.5
 	is_Attacking = true
 
 
 func kick():
 	setAnim("kick")
 	velocity.x = 0
+	colHitBox.position.y = 25
 	is_Attacking = true
 
 	
 func kickBike(dir):
 	if dir > 0:
-		velocity.x = 1000
+		velocity.x = 1500
 	else:
-		velocity.x = -1000
+		velocity.x = -1500
 	setAnim("bikeKick")
+	colHitBox.position.y = 0
 	is_Attacking = true
+
 	
-func frontPunch():
+func frontPunch(dir):
 	setAnim("frontPunch")
-	velocity.x = 5
+	if dir > 0:
+		velocity.x = 10000
+	else:
+		velocity.x = -10000
+	colHitBox.position.y = -30
 	is_Attacking = true
 	
 func setAnim(anim):
@@ -192,9 +214,9 @@ func _input(event):#converte os inputs em string para armazenar no array
 		sequenciaInputs("Esquerda")
 	elif event.is_action_pressed(command[1]):
 		sequenciaInputs("Direita")
-	elif event.is_action_pressed(command[3]):
+	elif event.is_action_pressed(command[2]):
 		sequenciaInputs("Cima")
-	elif event.is_action_pressed(command[4]):
+	elif event.is_action_pressed(command[3]):
 		sequenciaInputs("Baixo")
 	elif event.is_action_pressed(command[5]):
 		sequenciaInputs("Soco")
@@ -208,23 +230,12 @@ func _on_timer_combo_timeout():#timeout para resetar o array e fazer e chama a c
 	sequenciaCheck(sequencia)
 	sequencia.clear()
 
-func _on_skill_melee_area_entered(area):
-	barra.value -= lerp(-10,0,0.1)
-
 
 func _on_animation_player_animation_finished(anim_name):
 	print($AnimatedSprite2D.animation)
 	if anim_name == "skill1" or anim_name == "jumpSkill" or anim_name == "jumpSkill" or anim_name == "kick" or anim_name == "bikeKick" or anim_name == "frontPunch" or anim_name == "punch" or anim_name == "jumpMov" or anim_name == "jumpSt":
 		is_Attacking = false
 		special = null
-		isCombo = false
-
-	
-#	if $AnimatedSprite2D.animation == "skill1" or $AnimatedSprite2D.animation == "jumpSkill" or $AnimatedSprite2D.animation == "jumpSkill" or  $AnimatedSprite2D.animation == "kick" or $AnimatedSprite2D.animation == "bikeKick" or $AnimatedSprite2D.animation == "FrontPunch":
-#		is_Attacking = false
-	#	special = null
-#		isCombo = false
-
 
 func _on_animated_sprite_2d_animation_finished():
 	print($AnimatedSprite2D.animation)
@@ -232,3 +243,12 @@ func _on_animated_sprite_2d_animation_finished():
 		is_Attacking = false
 		special = null
 		isCombo = false
+
+
+#func _on_area_2d_area_entered(area):
+	#barra.value -= lerp(-10,0,0.1)
+
+
+func _on_skill_melee_area_entered(area):
+	print("area test lk")
+	barra.value -= 15

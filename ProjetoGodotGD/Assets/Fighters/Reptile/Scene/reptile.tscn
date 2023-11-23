@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://5i6qu2my7o77"]
+[gd_scene load_steps=38 format=3 uid="uid://5i6qu2my7o77"]
 
 [ext_resource type="Script" path="res://Assets/Fighters/Reptile/Script/reptile.gd" id="1_7h16o"]
 [ext_resource type="Texture2D" uid="uid://djebrrvc24vst" path="res://Assets/Fighters/Reptile/def.png" id="2_j0l22"]
@@ -1145,11 +1145,14 @@ _data = {
 radius = 5.33333
 height = 10.6667
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k00mq"]
+radius = 12.75
+height = 85.5
+
 [node name="Reptile" type="CharacterBody2D"]
 position = Vector2(0, -1)
 scale = Vector2(4, 4)
-collision_layer = 0
-collision_mask = 4
+collision_mask = 4336
 script = ExtResource("1_7h16o")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -1167,8 +1170,8 @@ libraries = {
 }
 
 [node name="HitBoxReptile" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
+collision_mask = 4112
 
 [node name="CollisionHitBox" type="CollisionShape2D" parent="HitBoxReptile"]
 position = Vector2(30, -45)
@@ -1179,7 +1182,16 @@ debug_color = Color(0.831682, 0.212371, 0.525744, 0.419608)
 [node name="Marker" type="Marker2D" parent="."]
 position = Vector2(37.6667, -14.3333)
 
+[node name="HurtBoxRep" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 16
+
+[node name="CollisionHurtBox" type="CollisionShape2D" parent="HurtBoxRep"]
+position = Vector2(-0.25, -9.25)
+shape = SubResource("CapsuleShape2D_k00mq")
+debug_color = Color(0, 0, 0, 0.419608)
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="HitBoxReptile" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="HurtBoxRep" to="." method="_on_hurt_box_rep_area_entered"]

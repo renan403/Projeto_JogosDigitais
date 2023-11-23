@@ -18,13 +18,15 @@ var collisionLayerP1 = 1
 var collisionMaskP1 = 5
 var collisionLayerSkillP1 = 4
 var collisionMaskSkillP1 = 5
-var flip1 = 1
+var flip1 = 0
 var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_BaixoPlayer1",
 					 "ui_AtkSocoAltoP1","ui_AtkSocoBaixoP1","ui_AtkChuteAltoP1","ui_AtkChuteBaixoP1"]
+					#0-ui_EsqPlayer1 1-ui_DirPlayer1 2-ui_CimaPlayer1 3-ui_BaixoPlayer1 
+					#4-ui_AtkSocoAltoP1 5-ui_AtkSocoBaixoP1 6-ui_AtkChuteAltoP1 7-ui_AtkChuteBaixoP1
 #Player 2 
 	# Definições para o player 2
 
-var player2 := "Play"
+var player2 := "LiuKang"
 var collisionLayerP2 = 5
 var collisionMaskP2 = 1
 var collisionLayerSkillP2 = 8
@@ -38,14 +40,14 @@ var listCommandP2 = ["ui_EsqPlayer2", "ui_DirPlayer2","ui_CimaPlayer2","ui_Baixo
 #ThePit altura 600
 
 func FaseAleat():
-	var telaRandom = round(randf_range(1,3))
+	var telaRandom = round(randf_range(1,2))
 	if telaRandom == 1:
 		Map = 750
 		return preload("res://Scenes/the_pit.tscn")
 	if telaRandom == 2:
 		Map = 1000
-		return preload("res://Scenes/DeadPool.tscn")
-	if telaRandom == 3:
-		Map = 1000
+		
 		return preload("res://Scenes/the_armory.tscn")	
-
+	#if telaRandom == 3:
+	#	Map = 1000
+	#	return preload("res://Scenes/DeadPool.tscn")

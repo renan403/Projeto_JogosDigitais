@@ -94,7 +94,7 @@ _data = {
 
 [node name="Acido" type="Area2D"]
 scale = Vector2(2, 2)
-collision_layer = 128
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_xhf45")
 

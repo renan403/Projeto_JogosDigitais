@@ -6,10 +6,6 @@ func _ready():
 	pass
 
 func _process(_delta):	
-	if !p1:
-		$Label.text = "Escolha jogador 1"
-	else:
-		$Label.text = "Escolha jogador 2"
 	if p1 and p2:
 		GoTo_PrincipalScene()
 
@@ -28,9 +24,13 @@ func _on_liu_kang_pressed():
 	return SelectionPlayer1() if !p1 else SelectionPlayer2()
 	
 func _on_reptile_pressed():
-	Global.selected = "Play"
+	Global.selected = "Reptile"
 	return SelectionPlayer1() if !p1 else SelectionPlayer2()
-	
+
+func _on_ryu_pressed():
+	Global.selected = "Ryu"
+	return SelectionPlayer1() if !p1 else SelectionPlayer2()
+		
 func GoTo_PrincipalScene():
 	get_tree().change_scene_to_file("res://Arena.tscn")
 	
@@ -43,6 +43,8 @@ func ChangeColor():
 	cor.border_width_right = 4
 	$LiuKang.add_theme_stylebox_override("hover", cor)
 	$Reptile.add_theme_stylebox_override("hover", cor)
+	$Ryu.add_theme_stylebox_override("hover", cor)
+
 
 
 

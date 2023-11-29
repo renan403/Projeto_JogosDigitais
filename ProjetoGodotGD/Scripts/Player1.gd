@@ -79,5 +79,5 @@ func _on_hit_box_area_entered(area):
 		barra.value -= 50
 
 
-func _on_hit_box_player_1_body_entered(body):
+func _on_hit_box_player_1_body_entered(_body):
 	pass#print(body)

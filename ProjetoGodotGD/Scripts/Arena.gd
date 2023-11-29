@@ -7,8 +7,9 @@ var player2 = null
 var cena = null
 
 var lutador = {"LiuKang": preload("res://Scenes/liu_kang.tscn"),
-			   "Play"   : preload("res://Scenes/player_1.tscn"),
-			   "Reptile": preload("res://Assets/Fighters/Reptile/Scene/reptile.tscn")}
+			   "Cooler"   : preload("res://Scenes/player_1.tscn"),
+			   "Reptile": preload("res://Assets/Fighters/Reptile/Scene/reptile.tscn"),
+			   "Ryu"    : preload("res://Assets/Fighters/Ryu/Scene/ryu.tscn")}
 
 var startMenu = preload("res://Scenes/start_screen.tscn").instantiate()
 var selection = preload("res://Scenes/selecao_champs.tscn").instantiate()

@@ -10,10 +10,6 @@ func _ready():
 func _process(_delta):
 	pass
 	
-func LoadsPlayer1():
-	return "LiuKang"
-func LoadsPlayer2():
-	return "Play"
 
 func _on_btn_versus_pressed():
 	get_tree().change_scene_to_file("res://Scenes/selecao_champs.tscn")

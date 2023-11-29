@@ -16,7 +16,10 @@ var colisaoMask
 var colisaoLayer
 var colisaoLayerEnemy
 var colisaoMaskEnemy
+var colisaoHurtLayer
+var colisaoHurtMask
 var flipD
+var dead
 @onready var animation = $AnimationPlayer as AnimationPlayer
 @onready var sprite = $Sprite as Sprite2D
 @onready var colisionHitBox  = $HitBoxReptile/CollisionHitBox  as CollisionShape2D
@@ -28,95 +31,105 @@ func Health(bar):
 func inicializaChampP1(initJg1):
 	if initJg1:
 		command = Global.listCommandP1
-		colisaoLayer = Global.collisionLayerP1
-		colisaoMask = Global.collisionMaskP1
-		colisaoLayerEnemy = Global.collisionLayerSkillP1
-		colisaoMaskEnemy = Global.collisionMaskSkillP1
+		set_collision_layer_value(Global.collisionLayerP1,true)
+		set_collision_mask_value(Global.collisionMaskP1,true)
+		
+		colisaoHurtLayer = Global.collisionHurtLayerP1
+		colisaoHurtMask = Global.collisionHurtMaskP1
+		
+		colisaoLayerEnemy = Global.collisionHitLayerP1
+		colisaoMaskEnemy = Global.collisionHitMaskP1
 		flipD = Global.flip1
 	pass
 func inicializaChampP2(initJg2):
 	if initJg2:
 		command = Global.listCommandP2
-		colisaoLayer = Global.collisionLayerP1
-		colisaoMask = Global.collisionMaskP1
-		colisaoLayerEnemy = Global.collisionLayerP2
-		colisaoMaskEnemy = Global.collisionMaskSkillP2
+
+		set_collision_layer_value(Global.collisionLayerP2,true)
+		set_collision_mask_value(Global.collisionMaskP2,true) 
+		
+		colisaoHurtLayer = Global.collisionHurtLayerP2
+		colisaoHurtMask = Global.collisionHurtMaskP2
+		
+		colisaoLayerEnemy = Global.collisionHitLayerP2
+		colisaoMaskEnemy = Global.collisionHitMaskP2
 		flipD = Global.flip2
 	pass
 
 func _on_ready():
-	$HitBoxReptile.collision_layer = colisaoLayer
-	$HitBoxReptile.set_collision_mask_value(colisaoMask,true)
-	sprite.flip_h = flipD
-	
 
-	
-	
+	$HurtBoxRep.set_collision_layer_value(colisaoHurtLayer, true)
+	$HurtBoxRep.set_collision_mask_value(colisaoHurtMask, true)
+	sprite.flip_h = flipD
 	var IDget = get_node(".").get_children()[3].get_instance_id()
 	instanciaId = instance_from_id(IDget)
 
 func _physics_process(delta):
-	
-	var direction = Input.get_axis(command[0], command[1])
-	if direction != 0:
-		dir = direction
-	if direction and !is_Attacking and !in_def:
-		velocity.x = direction * SPEED
-		if direction == -1:
-			colisionHitBox.position.x = -26
-		else:
-			colisionHitBox.position.x = 26
-		sprite.flip_h = false if direction == 1 else true
-		if !is_jumping:	
-			setAnim("walk")
-		elif is_jumping and !is_Attacking:
-			print(is_jumping)
-			if velocity.x != 0:
-				setAnim("Jump")
-	elif !is_Attacking:
-		if is_jumping:
-			setAnim("NeutralJump")
-		else:
-			setAnim("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	### ------------------------------------------  Ataques ---------------------------------------  ###
-	if Input.is_action_pressed(command[3]) and is_on_floor() and !is_Attacking:
-		setAnim("Defense")
-		velocity.x = 0	
-		in_def = true
+	if barra.value == 0 :
+		if !dead:
+			setAnim("Falling")
+		pass
 	else:
-		in_def = false	
-	if is_on_floor() and !is_Attacking:
-		if Input.is_action_just_pressed(command[4]) and velocity.x != 0:
-			setAnim("SphereOfForce")
-			PreencherVarAtk(0)
-		elif Input.is_action_just_pressed(command[4]):
-			setAnim("highPunch")
-			PreencherVarAtk(-46)
-		if Input.is_action_just_pressed(command[5]) and velocity.x != 0:
-			setAnim("Spit")
-			skillAcid()
-			PreencherVarAtk(0)
-		elif Input.is_action_just_pressed(command[5]):
-			setAnim("mediumPunch")
-			PreencherVarAtk(-27)
-		if Input.is_action_just_pressed(command[6]):
-			setAnim("HighKick")
-			PreencherVarAtk(-45)
-		if Input.is_action_just_pressed(command[7]):
-			setAnim("LowKick")
-			PreencherVarAtk(-22)
-		
-	if Input.is_action_just_pressed(command[2]) and is_on_floor() and !is_Attacking and !in_def:
-		velocity.y = JUMP_VELOCITY	
-		is_jumping = true
-	elif is_on_floor():
-		is_jumping = false	
+		var direction = Input.get_axis(command[0], command[1])
+		if direction != 0:
+			dir = direction
+		if direction and !is_Attacking and !in_def:
+			velocity.x = direction * SPEED
+			if direction == -1:
+				colisionHitBox.position.x = -26
+			else:
+				colisionHitBox.position.x = 26
+			sprite.flip_h = false if direction == 1 else true
+			if !is_jumping:	
+				setAnim("walk")
+			elif is_jumping and !is_Attacking:
+				print(is_jumping)
+				if velocity.x != 0:
+					setAnim("Jump")
+		elif !is_Attacking:
+			if is_jumping:
+				setAnim("NeutralJump")
+			else:
+				setAnim("idle")
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
-	move_and_slide()
+		### ------------------------------------------  Ataques ---------------------------------------  ###
+		if Input.is_action_pressed(command[3]) and is_on_floor() and !is_Attacking:
+			setAnim("Defense")
+			velocity.x = 0	
+			in_def = true
+		else:
+			in_def = false	
+		if is_on_floor() and !is_Attacking:
+			if Input.is_action_just_pressed(command[4]) and velocity.x != 0:
+				setAnim("SphereOfForce")
+				PreencherVarAtk(0)
+			elif Input.is_action_just_pressed(command[4]):
+				setAnim("highPunch")
+				PreencherVarAtk(-46)
+			if Input.is_action_just_pressed(command[5]) and velocity.x != 0:
+				setAnim("Spit")
+				skillAcid()
+				PreencherVarAtk(0)
+			elif Input.is_action_just_pressed(command[5]):
+				setAnim("mediumPunch")
+				PreencherVarAtk(-27)
+			if Input.is_action_just_pressed(command[6]):
+				setAnim("HighKick")
+				PreencherVarAtk(-45)
+			if Input.is_action_just_pressed(command[7]):
+				setAnim("LowKick")
+				PreencherVarAtk(-22)
+			
+		if Input.is_action_just_pressed(command[2]) and is_on_floor() and !is_Attacking and !in_def:
+			velocity.y = JUMP_VELOCITY	
+			is_jumping = true
+		elif is_on_floor():
+			is_jumping = false	
+
+		move_and_slide()
 
 ###  ------------------------------------------- Funções  ---------------------------------------  ###
 
@@ -125,7 +138,8 @@ func setAnim(anim):
 	
 func skillAcid():
 	var skill := Acid.instantiate()
-	skill.collision_mask = colisaoLayerEnemy
+	skill.set_collision_layer_value(colisaoLayerEnemy,true)
+	skill.set_collision_mask_value(colisaoMaskEnemy,true)
 	get_parent().add_child(skill)
 	skill.setDirection(dir)
 	# x = 24 y = -33
@@ -141,8 +155,8 @@ func skillAcid():
 func skillAcidBall():
 	#x = 24 y = -13
 	var skill := AcidBall.instantiate()
-	skill.collision_mask = colisaoMaskEnemy
-	skill.collision_layer = colisaoLayerEnemy
+	skill.set_collision_layer_value(colisaoLayerEnemy,true)
+	skill.set_collision_mask_value(colisaoMaskEnemy,true)
 	get_parent().add_child(skill)
 	skill.setDirection(dir)
 	$Marker.position.x = 24
@@ -174,11 +188,36 @@ func _on_animation_player_animation_finished(anim_name):
 		skillAcidBall()
 		is_Attacking = false
 		
-
+	if anim_name == "Falling":
+		dead = true	
+		$Timer.start()
+		
+				
 func RenameInstance():
 	instanciaId.name = "HitBox"
 
 
-func _on_hurt_box_rep_area_entered(area):
-	print("area test Rep")
-	barra.value -= 15
+func _on_hurt_box_rep_area_entered(_area):
+	if _area.name == "HitBox":
+		if in_def:
+			barra.value -= 5
+		else:
+			barra.value -= 100
+	else:
+		if in_def:
+			barra.value -= 7
+		else:
+			barra.value -= 100
+
+
+func _on_hurt_box_rep_body_entered(body):
+	pass
+
+var venc 
+func _on_timer_timeout():
+	print("time out")
+	if Global.player1 == "Reptile":
+		venc = Global.player2
+	else:
+		venc = Global.player1
+	Global.playerWin(venc) 

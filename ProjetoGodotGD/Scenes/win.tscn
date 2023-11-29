@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3a6o77ew6gj"]
+
+[ext_resource type="Script" path="res://Scripts/win.gd" id="1_cb7v0"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cb7v0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1599.0
+offset_bottom = 895.0
+color = Color(0.0117647, 0.0509804, 0.054902, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 267.0
+offset_right = 1433.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 50
+text = "teste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main" type="Button" parent="."]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 745.0
+offset_right = 1252.0
+offset_bottom = 813.0
+theme_override_font_sizes/font_size = 30
+text = "Voltar ao Menu
+"
+
+[node name="Selection" type="Button" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 598.0
+offset_right = 1253.0
+offset_bottom = 679.0
+theme_override_font_sizes/font_size = 30
+text = "Seleção de lutadores"
+
+[connection signal="pressed" from="Main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="Selection" to="." method="_on_selection_pressed"]

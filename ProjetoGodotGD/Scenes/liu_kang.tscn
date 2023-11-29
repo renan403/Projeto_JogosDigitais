@@ -1,7 +1,8 @@
-[gd_scene load_steps=77 format=3 uid="uid://c0vkbttxlj8qj"]
+[gd_scene load_steps=85 format=3 uid="uid://c0vkbttxlj8qj"]
 
 [ext_resource type="Texture2D" uid="uid://c7fawkhthpm32" path="res://Assets/Fighters/LiuKang/idle.png" id="1_b7rtl"]
 [ext_resource type="Script" path="res://Scripts/liu_kang.gd" id="1_o0xhx"]
+[ext_resource type="Texture2D" uid="uid://c6dtqn8o0gk6f" path="res://Assets/Fighters/LiuKang/Falling.png" id="2_ww0ac"]
 [ext_resource type="Texture2D" uid="uid://b53d6h5jotg6o" path="res://Assets/Fighters/LiuKang/KickBicicleta_strip4.png" id="3_rkc6n"]
 [ext_resource type="Texture2D" uid="uid://ioxks6xaguid" path="res://Assets/Fighters/LiuKang/jump.png" id="3_rskb6"]
 [ext_resource type="Texture2D" uid="uid://dnw8ub8bij4k7" path="res://Assets/Fighters/LiuKang/jumpFireDragon.png" id="4_0h7mr"]
@@ -11,6 +12,38 @@
 [ext_resource type="Texture2D" uid="uid://dwice7hnk6wqc" path="res://Assets/Fighters/LiuKang/Punch.png" id="6_008xp"]
 [ext_resource type="Texture2D" uid="uid://cljcu87ppnwfj" path="res://Assets/Fighters/LiuKang/Kick.png" id="6_f5lf2"]
 [ext_resource type="Texture2D" uid="uid://uq477xnkfcia" path="res://Assets/Fighters/LiuKang/jumpSt.png" id="7_hixjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqyyb"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(0, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cww7"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(88, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oynuq"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(176, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5fu2"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(264, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnjww"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(352, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_182eg"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(440, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0dia"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(528, 0, 88, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nufnh"]
+atlas = ExtResource("2_ww0ac")
+region = Rect2(616, 0, 88, 102)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3aa8w"]
 atlas = ExtResource("5_6wufe")
@@ -210,6 +243,35 @@ region = Rect2(318, 0, 53, 106)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_16wbm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqyyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cww7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oynuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5fu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnjww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_182eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0dia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nufnh")
+}],
+"loop": false,
+"name": &"Falling",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3aa8w")
@@ -420,45 +482,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Animation" id="Animation_m3o77"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"FrontPunch"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxLK/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_88k2i"]
 resource_name = "bikeKick"
 length = 0.7
@@ -489,7 +512,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxLK/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -528,7 +551,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxLK/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -681,7 +704,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxLK/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -721,7 +744,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxLK/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -790,7 +813,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db8qq"]
 _data = {
-"RESET": SubResource("Animation_m3o77"),
 "bikeKick": SubResource("Animation_88k2i"),
 "frontPunch": SubResource("Animation_xglsd"),
 "idle": SubResource("Animation_s7edy"),
@@ -814,13 +836,14 @@ size = Vector2(14, 18)
 
 [node name="LiuKang" type="CharacterBody2D"]
 scale = Vector2(4, 4)
-collision_layer = 16
-collision_mask = 271
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_o0xhx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_16wbm")
-animation = &"FrontPunch"
+animation = &"bikeKick"
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 autoplay = "idle"
@@ -835,22 +858,23 @@ shape = SubResource("CapsuleShape2D_w6sjw")
 [node name="SkillDragon" type="Marker2D" parent="."]
 position = Vector2(40.667, -28)
 
-[node name="SkillMelee" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(17.3333, -1.33333)
-collision_layer = 4096
+collision_layer = 0
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillMelee"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-20, -7.66667)
 shape = SubResource("CapsuleShape2D_kl0vx")
 debug_color = Color(0, 0, 0, 0.419608)
 
 [node name="TimerCombo" type="Timer" parent="."]
 
-[node name="HitBoxLK" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 257
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxLK"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(22.75, 25)
 shape = SubResource("RectangleShape2D_16h7j")
 debug_color = Color(0.996078, 0, 0, 0.419608)
@@ -858,5 +882,5 @@ debug_color = Color(0.996078, 0, 0, 0.419608)
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="SkillMelee" to="." method="_on_skill_melee_area_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_skill_melee_area_entered"]
 [connection signal="timeout" from="TimerCombo" to="." method="_on_timer_combo_timeout"]

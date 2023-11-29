@@ -1,25 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqnilsunpjvir"]
+[gd_scene load_steps=11 format=3 uid="uid://cqnilsunpjvir"]
 
 [ext_resource type="Script" path="res://Scripts/selecao_champs.gd" id="1_tvt3a"]
 [ext_resource type="Texture2D" uid="uid://b0snqldl3m55l" path="res://Assets/images/selectionScreen.png" id="2_eg7r6"]
-[ext_resource type="Texture2D" uid="uid://n1rv6ots8mmm" path="res://Assets/Fighters/LiuKang/LiuKangSelection.png" id="2_ggurv"]
-[ext_resource type="Texture2D" uid="uid://c4isy0krokyyp" path="res://Assets/Fighters/Reptile/ReptileSelection.png" id="3_y8qs6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_v2ish"]
-font_size = 25
+[ext_resource type="Texture2D" uid="uid://dsuhfa755fchf" path="res://Assets/Fighters/LiuKang/LiuKangSel.png" id="3_3cp2p"]
+[ext_resource type="Texture2D" uid="uid://c2dg14srbapix" path="res://Assets/Fighters/Reptile/reptile.jpg" id="4_gqtja"]
+[ext_resource type="Texture2D" uid="uid://bcupui1fica34" path="res://Assets/Fighters/Ryu/Ryu.jpg" id="5_6g6oy"]
+[ext_resource type="Texture2D" uid="uid://dyprbgd68cke6" path="res://Assets/images/Guts.jpg" id="6_efkgd"]
+[ext_resource type="Texture2D" uid="uid://dvtinpm05rw16" path="res://Assets/images/Thanos.jpg" id="6_t1xd7"]
+[ext_resource type="Texture2D" uid="uid://kwnsxl06gd36" path="res://Assets/images/baki-hanma.jpg" id="7_txi5b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kuru"]
 border_width_left = 4
-border_width_top = 4
+border_width_top = 7
 border_width_right = 4
-border_width_bottom = 4
+border_width_bottom = 7
 border_color = Color(0.8, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osoat"]
 border_width_left = 4
-border_width_top = 4
+border_width_top = 7
 border_width_right = 4
-border_width_bottom = 4
+border_width_bottom = 7
 border_color = Color(0.8, 0, 0, 1)
 
 [node name="SelecaoChamps" type="Control"]
@@ -35,25 +36,16 @@ script = ExtResource("1_tvt3a")
 position = Vector2(800, 452)
 texture = ExtResource("2_eg7r6")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 132.0
-offset_right = 263.0
-offset_bottom = 227.0
-text = "Escolha"
-label_settings = SubResource("LabelSettings_v2ish")
-
 [node name="LiuKang" type="Button" parent="."]
 layout_mode = 0
-offset_left = 274.0
-offset_top = 131.0
-offset_right = 494.0
-offset_bottom = 477.0
+offset_left = 272.0
+offset_top = 127.0
+offset_right = 502.0
+offset_bottom = 485.0
 tooltip_text = "Liu Kang"
 mouse_default_cursor_shape = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_2kuru")
-icon = ExtResource("2_ggurv")
+icon = ExtResource("3_3cp2p")
 
 [node name="Reptile" type="Button" parent="."]
 layout_mode = 0
@@ -61,8 +53,86 @@ offset_left = 689.0
 offset_top = 129.0
 offset_right = 910.0
 offset_bottom = 477.0
+tooltip_text = "Reptile"
 theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
-icon = ExtResource("3_y8qs6")
+icon = ExtResource("4_gqtja")
+
+[node name="Ryu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 129.0
+offset_right = 1326.0
+offset_bottom = 477.0
+tooltip_text = "Ryu"
+theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
+icon = ExtResource("5_6g6oy")
+
+[node name="Gatsu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 512.0
+offset_right = 1334.0
+offset_bottom = 870.0
+tooltip_text = "Guts"
+theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
+disabled = true
+icon = ExtResource("6_efkgd")
+
+[node name="Label" type="Label" parent="Gatsu"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 14.0
+offset_right = 161.0
+offset_bottom = 40.0
+text = "Bloqueado
+
+"
+
+[node name="Baki" type="Button" parent="."]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 510.0
+offset_right = 915.0
+offset_bottom = 868.0
+tooltip_text = "Baki Hanma"
+theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
+disabled = true
+icon = ExtResource("7_txi5b")
+
+[node name="Label" type="Label" parent="Baki"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 14.0
+offset_right = 161.0
+offset_bottom = 40.0
+text = "Bloqueado
+
+"
+
+[node name="Thanos" type="Button" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 515.0
+offset_right = 498.0
+offset_bottom = 873.0
+tooltip_text = "Thanos"
+theme_override_styles/hover = SubResource("StyleBoxFlat_osoat")
+disabled = true
+icon = ExtResource("6_t1xd7")
+
+[node name="Label" type="Label" parent="Thanos"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 14.0
+offset_right = 161.0
+offset_bottom = 40.0
+text = "Bloqueado
+
+"
 
 [connection signal="pressed" from="LiuKang" to="." method="_on_liu_kang_pressed"]
 [connection signal="pressed" from="Reptile" to="." method="_on_reptile_pressed"]
+[connection signal="pressed" from="Ryu" to="." method="_on_ryu_pressed"]
+[connection signal="pressed" from="Gatsu" to="." method="_on_ryu_pressed"]
+[connection signal="pressed" from="Baki" to="." method="_on_ryu_pressed"]
+[connection signal="pressed" from="Thanos" to="." method="_on_ryu_pressed"]

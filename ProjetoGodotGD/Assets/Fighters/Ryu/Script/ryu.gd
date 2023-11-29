@@ -207,15 +207,16 @@ func _on_hurt_box_area_entered(_area):
 		if in_def:
 			barra.value -= 5
 		else:
-			barra.value -= 100
+			barra.value -= 15
 	else:
 		if in_def:
 			barra.value -= 7
 		else:
-			barra.value -= 100
+			barra.value -= 30
 
 var venc 
 func _on_timer_timeout():
+	$Timer.stop()
 	if Global.player1 == "Ryu":
 		venc = Global.player2
 	else:

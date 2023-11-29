@@ -198,16 +198,17 @@ func RenameInstance():
 
 
 func _on_hurt_box_rep_area_entered(_area):
+	print(_area)
 	if _area.name == "HitBox":
 		if in_def:
 			barra.value -= 5
 		else:
-			barra.value -= 100
+			barra.value -= 15
 	else:
 		if in_def:
 			barra.value -= 7
 		else:
-			barra.value -= 100
+			barra.value -= 30
 
 
 func _on_hurt_box_rep_body_entered(body):
@@ -215,6 +216,7 @@ func _on_hurt_box_rep_body_entered(body):
 
 var venc 
 func _on_timer_timeout():
+	$Timer.stop()
 	print("time out")
 	if Global.player1 == "Reptile":
 		venc = Global.player2

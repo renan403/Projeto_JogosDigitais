@@ -70,6 +70,9 @@ func inicializaChampP2(initJg2):
 func _on_ready():
 	$HurtBox.set_collision_mask_value(colisaoHurtMask,true) 
 	$HurtBox.set_collision_mask_value(colisaoHurtLayer,true)
+	$HitBox.set_collision_layer_value(Global.collisionHitLayerP1, true) 
+	$HitBox.set_collision_mask_value(Global.collisionHitMaskP1, true) 
+	animation.scale.x = flipD
 	pass
 
 func _physics_process(delta):

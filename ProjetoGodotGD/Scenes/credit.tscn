@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://be6486aqbsam0"]
+
+[ext_resource type="Script" path="res://Scripts/credit.gd" id="1_bxnwb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijwyv"]
+bg_color = Color(0.866667, 0.494118, 0, 1)
+
+[sub_resource type="Theme" id="Theme_wuov4"]
+Button/styles/normal = SubResource("StyleBoxFlat_ijwyv")
+
+[node name="credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxnwb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Retornar" type="Button" parent="."]
+offset_right = 221.0
+offset_bottom = 67.0
+theme = SubResource("Theme_wuov4")
+theme_override_font_sizes/font_size = 40
+text = "Retornar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Jogo produzido pelo grupo 10"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 4.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Integrantes :"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 2
+offset_left = 157.0
+offset_top = 252.0
+offset_right = 298.0
+offset_bottom = 319.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Renan"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 2
+offset_left = 453.0
+offset_top = 252.0
+offset_right = 563.0
+offset_bottom = 319.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Ryan"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1349.0
+offset_top = 252.0
+offset_right = 1475.0
+offset_bottom = 319.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Lucas"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 2
+offset_left = 693.0
+offset_top = 252.0
+offset_right = 845.0
+offset_bottom = 319.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Willian"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 2
+offset_left = 941.0
+offset_top = 252.0
+offset_right = 1196.0
+offset_bottom = 319.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Gaby"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Retornar" to="." method="_on_retornar_pressed"]

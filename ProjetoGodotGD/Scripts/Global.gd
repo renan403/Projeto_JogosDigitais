@@ -16,7 +16,7 @@ var vencedor := ""
 var player1 := "Ryu"
 var player1Win = player1
 var collisionLayerP1 = 1
-var collisionMaskP1 = 3
+var collisionMaskP1 = [3, 5]
 
 var collisionHurtLayerP1 = 9
 var collisionHurtMaskP1 = 8
@@ -35,7 +35,7 @@ var listCommandP1 = ["ui_EsqPlayer1", "ui_DirPlayer1","ui_CimaPlayer1","ui_Baixo
 var player2 := "Reptile"
 var player2Win = player2
 var collisionLayerP2 = 5
-var collisionMaskP2 = 7
+var collisionMaskP2 = [1, 7]
 
 var collisionHurtLayerP2 = 13
 var collisionHurtMaskP2 = 4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://c0vkbttxlj8qj"]
+[gd_scene load_steps=87 format=3 uid="uid://c0vkbttxlj8qj"]
 
 [ext_resource type="Texture2D" uid="uid://c7fawkhthpm32" path="res://Assets/Fighters/LiuKang/idle.png" id="1_b7rtl"]
 [ext_resource type="Script" path="res://Scripts/liu_kang.gd" id="1_o0xhx"]
@@ -519,11 +519,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, false, false, false, false, false, false, false]
+"values": [false, false, false, false, false, false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_xglsd"]
 resource_name = "frontPunch"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -543,7 +544,7 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -555,10 +556,10 @@ tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, true, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_s7edy"]
@@ -811,9 +812,77 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_5xqls"]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Falling"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_n6cvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Falling"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db8qq"]
 _data = {
+"RESET": SubResource("Animation_n6cvs"),
 "bikeKick": SubResource("Animation_88k2i"),
+"falling": SubResource("Animation_5xqls"),
 "frontPunch": SubResource("Animation_xglsd"),
 "idle": SubResource("Animation_s7edy"),
 "jumpMov": SubResource("Animation_0hynn"),
@@ -837,13 +906,12 @@ size = Vector2(14, 18)
 [node name="LiuKang" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_o0xhx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_16wbm")
-animation = &"bikeKick"
-frame = 7
+animation = &"Falling"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 autoplay = "idle"
@@ -871,12 +939,13 @@ debug_color = Color(0, 0, 0, 0.419608)
 [node name="TimerCombo" type="Timer" parent="."]
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 257
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(22.75, 25)
 shape = SubResource("RectangleShape2D_16h7j")
+disabled = true
 debug_color = Color(0.996078, 0, 0, 0.419608)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

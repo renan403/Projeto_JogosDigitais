@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dimhglnwd6prt"]
+[gd_scene load_steps=10 format=3 uid="uid://dimhglnwd6prt"]
 
 [ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_cvv8g"]
 [ext_resource type="Texture2D" uid="uid://dlax8ve1nyxio" path="res://Assets/images/startScreen.png" id="2_4nta7"]
@@ -9,13 +9,18 @@
 Button/styles/normal = SubResource("StyleBoxFlat_00878")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enjtq"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl67a"]
 bg_color = Color(0.639216, 0.490196, 0.988235, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80qk2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht2i7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1smuo"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -90,6 +95,73 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
 
+[node name="btnCredit" type="Button" parent="Control"]
+modulate = Color(0.756863, 0.156863, 0.992157, 1)
+self_modulate = Color(0.756863, 0.156863, 0.992157, 1)
+layout_mode = 2
+offset_left = 606.0
+offset_top = 631.0
+offset_right = 1021.0
+offset_bottom = 749.0
+focus_neighbor_top = NodePath("../btnSair")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
+
+[node name="btnSound" type="Button" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 136.0
+offset_top = 782.0
+offset_right = 235.0
+offset_bottom = 880.0
+focus_neighbor_top = NodePath("../btnSair")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_enjtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sl67a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
+action_mode = 0
+
+[node name="barra" type="Button" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 145.0
+offset_top = 865.0
+offset_right = 244.0
+offset_bottom = 874.0
+rotation = -0.811578
+focus_neighbor_top = NodePath("../btnSair")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ht2i7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1smuo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80qk2")
+action_mode = 0
+
+[node name="botãoGit" type="LinkButton" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.025
+anchor_bottom = 0.044
+offset_left = 25.0
+offset_top = 783.0
+offset_right = 78.0
+offset_bottom = 838.4
+uri = "https://github.com/renan403/Projeto_JogosDigitais"
+
 [connection signal="pressed" from="Control/btnSair" to="." method="_on_btn_sair_pressed"]
 [connection signal="pressed" from="Control/btnControls" to="." method="_on_btn_controls_pressed"]
 [connection signal="pressed" from="Control/btnVersus" to="." method="_on_btn_versus_pressed"]
+[connection signal="pressed" from="Control/btnCredit" to="." method="_on_btn_credit_pressed"]
+[connection signal="pressed" from="Control/btnSound" to="." method="_on_btn_sound_pressed"]

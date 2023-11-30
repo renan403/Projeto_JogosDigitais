@@ -30,29 +30,42 @@ func Health(bar):
 	barra = bar
 func inicializaChampP1(initJg1):
 	if initJg1:
+		dir = 1
+		flipD = Global.flip1
 		command = Global.listCommandP1
+		
 		set_collision_layer_value(Global.collisionLayerP1,true)
-		set_collision_mask_value(Global.collisionMaskP1,true)
+		for i in Global.collisionMaskP1:
+			set_collision_mask_value(i,true)
 		
 		colisaoHurtLayer = Global.collisionHurtLayerP1
 		colisaoHurtMask = Global.collisionHurtMaskP1
 		
+		$HitBoxReptile.set_collision_layer_value(Global.collisionHitLayerP1, true) 
+		$HitBoxReptile.set_collision_mask_value(Global.collisionHitMaskP1, true) 
+		
 		colisaoLayerEnemy = Global.collisionHitLayerP1
 		colisaoMaskEnemy = Global.collisionHitMaskP1
-		flipD = Global.flip1
+		
 	pass
 func inicializaChampP2(initJg2):
 	if initJg2:
+		dir = -1
 		command = Global.listCommandP2
 
 		set_collision_layer_value(Global.collisionLayerP2,true)
-		set_collision_mask_value(Global.collisionMaskP2,true) 
-		
+		for i in Global.collisionMaskP2:
+			set_collision_mask_value(i,true)
+
 		colisaoHurtLayer = Global.collisionHurtLayerP2
 		colisaoHurtMask = Global.collisionHurtMaskP2
 		
+		$HitBoxReptile.set_collision_layer_value(Global.collisionHitLayerP2, true) 
+		$HitBoxReptile.set_collision_mask_value(Global.collisionHitMaskP2, true) 
+
 		colisaoLayerEnemy = Global.collisionHitLayerP2
 		colisaoMaskEnemy = Global.collisionHitMaskP2
+		
 		flipD = Global.flip2
 	pass
 

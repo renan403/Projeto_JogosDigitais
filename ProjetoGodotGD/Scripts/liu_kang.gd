@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const Fire := preload("res://Scenes/fire_dragon.tscn")
 const SPEED := 500.0
-const JUMP_VELOCITY := -1200.0
+const JUMP_VELOCITY := -1400.0
 var is_Attacking := false
 var is_jumping := false
 var isCombo= false
@@ -43,21 +43,24 @@ func inicializaChampP1(initJg1):
 	if initJg1:
 		command = Global.listCommandP1
 		set_collision_layer_value(Global.collisionLayerP1,true)
-		set_collision_mask_value(Global.collisionMaskP1,true)
+		for i in Global.collisionMaskP1:
+			set_collision_mask_value(i,true)
 		
 		colisaoHurtLayer = Global.collisionHurtLayerP1
 		colisaoHurtMask = Global.collisionHurtMaskP1
 		
 		colisaoLayerEnemy = Global.collisionHitLayerP1
 		colisaoMaskEnemy = Global.collisionHitMaskP1
-		flipD = Global.flip1
+		flipD = 1
 	pass
+	
 func inicializaChampP2(initJg2):
 	if initJg2:
 		command = Global.listCommandP2
 
 		set_collision_layer_value(Global.collisionLayerP2,true)
-		set_collision_mask_value(Global.collisionMaskP2,true) 
+		for i in Global.collisionMaskP2:
+			set_collision_mask_value(i,true)
 		
 		colisaoHurtLayer = Global.collisionHurtLayerP2
 		colisaoHurtMask = Global.collisionHurtMaskP2
@@ -73,16 +76,17 @@ func _on_ready():
 	$HitBox.set_collision_layer_value(Global.collisionHitLayerP1, true) 
 	$HitBox.set_collision_mask_value(Global.collisionHitMaskP1, true) 
 	animation.scale.x = flipD
+	colHitBox.disabled = true
 	pass
 
 func _physics_process(delta):
 	if barra.value == 0 :
 		if !dead:
-			animation.play("Falling")
+			setAnim("falling")
 			if Global.player1 == "LiuKang":
-				Global.playerWin(Global.player2) 
+				Global.playerWin(Global.player2)
 			elif Global.player2 == "LiuKang":
-					Global.playerWin(Global.player1) 
+					Global.playerWin(Global.player1)
 		pass
 	else:
 		var  direction  =	Input.get_axis(command[0], command[1])
@@ -113,13 +117,13 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 				
 		
-		if special == "bikeKick1":
+		if special == "bikeKick1" and !is_jumping:
 				kickBike(dir)
-		elif special == "bikeKick2":
+		elif special == "bikeKick2" and !is_jumping:
 				kickBike(dir)
-		elif special == "frontPunch1":
+		elif special == "frontPunch1" and velocity.x == 0:
 				frontPunch(dir)
-		elif special == "frontPunch2":
+		elif special == "frontPunch2" and velocity.x == 0:
 				frontPunch(dir)
 		elif special == "fireDragon":
 				FireDragon()#não está saíndo  de forma conssitente
@@ -191,8 +195,10 @@ func kick():
 	
 func kickBike(_dir):
 	if _dir > 0:
+		position.y = 850
 		velocity.x = 1500
 	else:
+		position.y = 850
 		velocity.x = -1500
 	setAnim("bikeKick")
 	colHitBox.position.y = 0
@@ -201,10 +207,10 @@ func kickBike(_dir):
 	
 func frontPunch(_dir):
 	setAnim("frontPunch")
-	if _dir > 0:
-		velocity.x = 10000
-	else:
-		velocity.x = -10000
+	#if _dir > 0:
+		#velocity.x = 10000
+	#else:
+		#velocity.x = -10000
 	colHitBox.position.y = -30
 	is_Attacking = true
 	
@@ -256,7 +262,7 @@ func _on_timer_combo_timeout():#timeout para resetar o array e fazer e chama a c
 
 func _on_animation_player_animation_finished(anim_name):
 	print(anim_name)
-	if anim_name == "Falling":
+	if anim_name == "falling":
 		dead = true
 	if anim_name == "skill1" or anim_name == "jumpSkill" or anim_name == "jumpSkill" or anim_name == "kick" or anim_name == "bikeKick" or anim_name == "frontPunch" or anim_name == "punch" or anim_name == "jumpMov" or anim_name == "jumpSt":
 		is_Attacking = false
@@ -279,4 +285,4 @@ func _on_skill_melee_area_entered(_area):
 	if _area.name == "HitBox":
 		barra.value -= 15
 	else:
-		barra.value -= 30
+		barra.value -= 20

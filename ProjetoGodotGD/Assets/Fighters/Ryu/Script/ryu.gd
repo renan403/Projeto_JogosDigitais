@@ -35,7 +35,8 @@ func inicializaChampP1(initJg1):
 		command = Global.listCommandP1
 		
 		set_collision_layer_value(Global.collisionLayerP1,true)
-		set_collision_mask_value(Global.collisionMaskP1,true)
+		for i in Global.collisionMaskP1:
+			set_collision_mask_value(i,true)
 		
 		colisaoHurtLayer = Global.collisionHurtLayerP1
 		colisaoHurtMask = Global.collisionHurtMaskP1
@@ -53,7 +54,8 @@ func inicializaChampP2(initJg2):
 		command = Global.listCommandP2
 
 		set_collision_layer_value(Global.collisionLayerP2,true)
-		set_collision_mask_value(Global.collisionMaskP2,true)
+		for i in Global.collisionMaskP2:
+			set_collision_mask_value(i,true)
 
 		colisaoHurtLayer = Global.collisionHurtLayerP2
 		colisaoHurtMask = Global.collisionHurtMaskP2
@@ -75,6 +77,7 @@ func _on_ready():
 	var IDget = get_node(".").get_children()[1].get_instance_id()
 	instanciaId = instance_from_id(IDget)
 	sprite.flip_h = flip
+	
 func _physics_process(delta):
 	if barra.value == 0 :
 		if !dead:
@@ -128,8 +131,7 @@ func _physics_process(delta):
 				setAnim("LowPunch")
 				PreencherVarAtk(-32.5,49.5)
 			if Input.is_action_just_pressed(command[6]) and velocity.x != 0:
-				setAnim("Tatsumaki")
-				velocity.y += -1000
+				chuteGiratorio(dir)
 				PreencherVarAtk(0,0)
 			elif Input.is_action_just_pressed(command[6]):
 				setAnim("HighKick")
@@ -215,6 +217,17 @@ func _on_hurt_box_area_entered(_area):
 			barra.value -= 30
 
 var venc 
+
+func chuteGiratorio(_dir):
+	if _dir > 0:
+		#position.y = 850
+		velocity.x -= -1000
+	else:
+		#position.y = 500
+		velocity.x -= 1000
+	setAnim("Tatsumaki")
+
+
 func _on_timer_timeout():
 	$Timer.stop()
 	if Global.player1 == "Ryu":
